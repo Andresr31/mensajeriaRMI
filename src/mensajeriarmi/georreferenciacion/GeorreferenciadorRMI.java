@@ -6,8 +6,8 @@
 package mensajeriarmi.georreferenciacion;
 
 /**
- *
- * @author Otro
+ * @author Carlos Andres Rojas
+ * @author David Salgado Ospina
  */
 public class GeorreferenciadorRMI {
     

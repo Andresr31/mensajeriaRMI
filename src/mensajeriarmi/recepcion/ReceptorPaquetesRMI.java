@@ -5,10 +5,26 @@
  */
 package mensajeriarmi.recepcion;
 
+import java.rmi.RemoteException;
+import mensajeriarmi.paquete.Paquete;
+
 /**
- *
- * @author Otro
+ * @author Carlos Andres Rojas
+ * @author David Salgado Ospina
  */
-public class ReceptorPaquetesRMI {
+public class ReceptorPaquetesRMI implements ReceptorPaquetes{
+
+    public ReceptorPaquetesRMI(){
+        super();
+    }
     
+    
+    // Métodos remotos (vienen de la interfaz remota)
+    
+    @Override
+    public String registrarPaquete(Paquete paquete) 
+            throws RemoteException 
+    {
+        return "hola mundo";
+    } 
 }
