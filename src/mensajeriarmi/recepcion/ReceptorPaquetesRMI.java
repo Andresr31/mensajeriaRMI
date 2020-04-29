@@ -6,20 +6,73 @@
 package mensajeriarmi.recepcion;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import mensajeriarmi.bodega.Bodega;
+import mensajeriarmi.georreferenciacion.Georreferenciador;
 import mensajeriarmi.paquete.Paquete;
+import mensajeriarmi.paquete.Ubicacion;
 
 /**
  * @author Carlos Andres Rojas
  * @author David Salgado Ospina
  */
 public class ReceptorPaquetesRMI implements ReceptorPaquetes{
+    
+    private ArrayList<Paquete> bufferPaquetes;
+ 
+    private Georreferenciador georreferenciador;
+    private Bodega bodega;
+    
+    private ReceptorServer servidor;
+    private ReceptorRed red;
 
     public ReceptorPaquetesRMI(){
         super();
+        this.bufferPaquetes = new ArrayList<>();
+        
+        //this.asignarGeorreferenciador();
+        //this.asignarBodega();
+        
+        this.servidor = new ReceptorServer("127.0.0.1", this);
+        this.red = new ReceptorRed("127.0.0.1");
+
     }
     
     
     // Métodos remotos (vienen de la interfaz remota)
+    public Ubicacion consultarUbicacion(Paquete p){
+        // Solicitar a georreferenciador ubicacion
+        Ubicacion ubicacion = null;
+        
+        return ubicacion;
+    }
+    
+    public boolean almacenarPaquete(Paquete p){
+        // Solicitar a la bodega almacenar el paquete
+        return false;
+    }
+    
+    public String procesarPaquete(Paquete p){
+        
+        //Solicitar ubicación del paquete con consultar Ubicacion
+        //Solicitar almacenar el paquete en la bodega
+        // Cargar los paquetes que llegan en el buffer de paquetes con el sleep
+        // Notificar proceso de paquetes
+        
+        return null;
+    }
+    
+    ////////////////////////////////////////////////////////////////////////
+    
+    public void asignarBodega(){
+        this.bodega = this.red.asignarBodega();
+    }
+    
+    public void asignarGeorreferenciador(){
+        this.georreferenciador = this.red.asignarGeorreferenciador();
+    }
+    
+    ////////////////////////////////////////////////////////////////////////
     
     @Override
     public String registrarPaquete(Paquete paquete) 
@@ -27,4 +80,51 @@ public class ReceptorPaquetesRMI implements ReceptorPaquetes{
     {
         return "hola mundo";
     } 
+    
+    ////////////////////////////////////////////////////////////////////////
+
+    public ArrayList<Paquete> getBufferPaquetes() {
+        return bufferPaquetes;
+    }
+
+    public void setBufferPaquetes(ArrayList<Paquete> bufferPaquetes) {
+        this.bufferPaquetes = bufferPaquetes;
+    }
+
+    public Georreferenciador getGeorreferenciador() {
+        return georreferenciador;
+    }
+
+    public void setGeorreferenciador(Georreferenciador georreferenciador) {
+        this.georreferenciador = georreferenciador;
+    }
+
+    public Bodega getBodega() {
+        return bodega;
+    }
+
+    public void setBodega(Bodega bodega) {
+        this.bodega = bodega;
+    }
+
+    public ReceptorServer getServidor() {
+        return servidor;
+    }
+
+    public void setServidor(ReceptorServer servidor) {
+        this.servidor = servidor;
+    }
+
+    public ReceptorRed getRed() {
+        return red;
+    }
+
+    public void setRed(ReceptorRed red) {
+        this.red = red;
+    }
+    
+    ///////////////////////////////////////////////////////////////////////////
+    
+    
+    
 }
