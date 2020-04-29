@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- *
- * @author Otro
+ * @author Carlos Andres Rojas
+ * @author David Salgado Ospina
  */
 public class GeorreferenciadorRMI {
     
