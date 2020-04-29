@@ -20,9 +20,11 @@ import java.sql.SQLException;
  */
 public class Conexion {
     
+    
+    
     private Connection conn;
     
-    public Connection connect() {
+    public void conectar() {
         // SQLite connection string
         String url = "jdbc:sqlite:georreferenciaColombia.db";
         conn = null;
@@ -32,7 +34,7 @@ public class Conexion {
         } catch (SQLException e) {
             System.out.println("Falla en conexión DB: " + e.getMessage());
         }
-        return conn;
+
     }
      
     public void closeConnection(Connection conn){
@@ -41,5 +43,9 @@ public class Conexion {
         } catch (SQLException ex) {
             System.out.println("No se pudo cerrar la conexión");
         }
+    }
+    
+    public Connection getConexion(){
+        return this.conn;
     }
 }

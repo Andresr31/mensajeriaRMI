@@ -16,8 +16,7 @@ public class Paquete {
     private String nombreReceptor;
     private String ciudadReceptor;
     private String departamentoReceptor;
-    private double latitudReceptor;
-    private double longitudReceptor;
+    private Ubicacion ubicacionReceptor;
     private Date fechaRecibido;
     private Date fechaEnvio;
     private Date horaRecibido;
@@ -73,22 +72,6 @@ public class Paquete {
         this.departamentoReceptor = departamentoReceptor;
     }
 
-    public double getLatitudReceptor() {
-        return latitudReceptor;
-    }
-
-    public void setLatitudReceptor(double latitudReceptor) {
-        this.latitudReceptor = latitudReceptor;
-    }
-
-    public double getLongitudReceptor() {
-        return longitudReceptor;
-    }
-
-    public void setLongitudReceptor(double longitudReceptor) {
-        this.longitudReceptor = longitudReceptor;
-    }
-
     public Date getFechaRecibido() {
         return fechaRecibido;
     }
@@ -135,6 +118,16 @@ public class Paquete {
 
     public void setPeso(double peso) {
         this.peso = peso;
+    }
+    
+    //////////////////////////////////////////////////////////////////////////
+    
+    public void ubicarReceptor(double latitud, double longitud){
+        this.ubicacionReceptor = new Ubicacion(latitud, longitud);
+    }
+    
+    public void setLatitudReceptor(double latitud){
+        this.ubicacionReceptor.setLatitud(latitud);
     }
     
     
