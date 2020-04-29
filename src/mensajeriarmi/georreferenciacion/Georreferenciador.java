@@ -5,10 +5,18 @@
  */
 package mensajeriarmi.georreferenciacion;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import mensajeriarmi.paquete.Paquete;
+import mensajeriarmi.paquete.Ubicacion;
+
 /**
  * @author Carlos Andres Rojas
  * @author David Salgado Ospina
  */
-public interface Georreferenciador {
+public interface Georreferenciador extends Remote{
+    
+    public Ubicacion georreferenciar(Paquete p)
+            throws RemoteException;
     
 }

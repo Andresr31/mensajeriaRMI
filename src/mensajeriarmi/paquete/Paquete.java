@@ -1,6 +1,7 @@
 
 package mensajeriarmi.paquete;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Date;
  * @author David Salgado Ospina
  * 
  */
-public class Paquete {
+public class Paquete implements Serializable{
     
     private String nombreEmisor;
     private String ciudadEmisor;
@@ -122,13 +123,15 @@ public class Paquete {
     
     //////////////////////////////////////////////////////////////////////////
     
-    public void ubicarReceptor(double latitud, double longitud){
-        this.ubicacionReceptor = new Ubicacion(latitud, longitud);
+    public void ubicarReceptor(Ubicacion u){
+        this.ubicacionReceptor = u;
+    }
+
+    public Ubicacion getUbicacionReceptor() {
+        return ubicacionReceptor;
     }
     
-    public void setLatitudReceptor(double latitud){
-        this.ubicacionReceptor.setLatitud(latitud);
-    }
+    
     
     
     

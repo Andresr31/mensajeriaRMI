@@ -7,6 +7,8 @@ package mensajeriarmi.recepcion;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import mensajeriarmi.bodega.Bodega;
 import mensajeriarmi.georreferenciacion.Georreferenciador;
 import mensajeriarmi.paquete.Paquete;
@@ -29,12 +31,13 @@ public class ReceptorPaquetesRMI implements ReceptorPaquetes{
     public ReceptorPaquetesRMI(){
         super();
         this.bufferPaquetes = new ArrayList<>();
-        
-        //this.asignarGeorreferenciador();
+       
         //this.asignarBodega();
         
         this.servidor = new ReceptorServer("127.0.0.1", this);
         this.red = new ReceptorRed("127.0.0.1");
+        
+        this.asignarGeorreferenciador();
 
     }
     
@@ -43,6 +46,11 @@ public class ReceptorPaquetesRMI implements ReceptorPaquetes{
     public Ubicacion consultarUbicacion(Paquete p){
         // Solicitar a georreferenciador ubicacion
         Ubicacion ubicacion = null;
+        try {
+            ubicacion = this.georreferenciador.georreferenciar(p);
+        } catch (RemoteException ex) {
+            System.out.println("Error al georreferenciar paquete \n" + ex.getMessage());
+        }
         
         return ubicacion;
     }
@@ -58,8 +66,19 @@ public class ReceptorPaquetesRMI implements ReceptorPaquetes{
         //Solicitar almacenar el paquete en la bodega
         // Cargar los paquetes que llegan en el buffer de paquetes con el sleep
         // Notificar proceso de paquetes
+        System.out.println("Ubicando: "+p.getNombreEmisor());
+        Ubicacion uPaquete = consultarUbicacion(p);
+        p.ubicarReceptor(uPaquete);
         
-        return null;
+        String respuesta = "";
+        respuesta += p.getNombreEmisor() +"\n";
+        respuesta += p.getNombreReceptor()+"\n";
+        respuesta += p.getCiudadReceptor()+"\n";
+        respuesta += p.getDepartamentoReceptor()+"\n";
+        respuesta += p.getUbicacionReceptor().getLatitud()+"\n";
+        respuesta += p.getUbicacionReceptor().getLongitud()+"\n";
+        
+        return respuesta;
     }
     
     ////////////////////////////////////////////////////////////////////////
@@ -78,7 +97,7 @@ public class ReceptorPaquetesRMI implements ReceptorPaquetes{
     public String registrarPaquete(Paquete paquete) 
             throws RemoteException 
     {
-        return "hola mundo";
+        return this.procesarPaquete(paquete);
     } 
     
     ////////////////////////////////////////////////////////////////////////

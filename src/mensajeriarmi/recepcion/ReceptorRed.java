@@ -13,7 +13,8 @@ import mensajeriarmi.georreferenciacion.Georreferenciador;
  */
 public class ReceptorRed {
 
-    private Registry registroRMI;
+    private Registry registroRMIGeo;
+    private Registry registroRMIBod;
 
     public ReceptorRed(String host) {
 
@@ -30,8 +31,8 @@ public class ReceptorRed {
         }
 
         try {
-            this.registroRMI = LocateRegistry.getRegistry(host);
-
+            this.registroRMIGeo = LocateRegistry.getRegistry(host,4400);
+            this.registroRMIBod = LocateRegistry.getRegistry(host,4410);
         } catch (RemoteException e) {
             System.out.println("[Cliente] (RemoteException): " + e.getMessage());
         }
@@ -41,7 +42,7 @@ public class ReceptorRed {
 
         Bodega bodega = null;
         try {
-            bodega = (Bodega) this.registroRMI.lookup("Bodega");
+            bodega = (Bodega) this.registroRMIBod.lookup("Bodega");
 
         } catch (RemoteException | NotBoundException ex) {
             System.out.println(ex);
@@ -53,11 +54,12 @@ public class ReceptorRed {
 
         Georreferenciador georreferenciador = null;
         try {
-            georreferenciador = (Georreferenciador) this.registroRMI.lookup("Georreferenciador");
+            georreferenciador = (Georreferenciador) this.registroRMIGeo.lookup("Georreferenciador");
 
         } catch (RemoteException | NotBoundException ex) {
             System.out.println(ex);
         }
+        
         return georreferenciador;
     }
     
