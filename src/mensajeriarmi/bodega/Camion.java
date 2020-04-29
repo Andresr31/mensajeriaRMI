@@ -5,6 +5,7 @@
  */
 package mensajeriarmi.bodega;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import mensajeriarmi.paquete.Paquete;
 import mensajeriarmi.paquete.Ubicacion;
@@ -13,7 +14,7 @@ import mensajeriarmi.paquete.Ubicacion;
  * @author Carlos Andres Rojas
  * @author David Salgado Ospina
  */
-public class Camion {
+public class Camion implements Serializable{
     
     public ArrayList<Paquete> paquetes;
     public double capacidadTotal; // Peso maximo

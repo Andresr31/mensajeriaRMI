@@ -14,11 +14,13 @@ import java.rmi.server.UnicastRemoteObject;
 public class GeorreferenciadorServer {
     
     private String ipServidor;
+    private int puerto;
     private GeorreferenciadorRMI georreferenciadorI;
 
-    public GeorreferenciadorServer(String ipServidor, GeorreferenciadorRMI georreferenciador) {
+    public GeorreferenciadorServer(String ipServidor,int puerto, GeorreferenciadorRMI georreferenciador) {
         this.ipServidor = ipServidor;
         this.georreferenciadorI = georreferenciador;
+        this.puerto = puerto;
         this.conectar();
     }
     
@@ -43,7 +45,7 @@ public class GeorreferenciadorServer {
             Georreferenciador stub = (Georreferenciador) UnicastRemoteObject.exportObject(georreferenciador, 0);
             // Puerto por defecto del RMI Registry: 1099
             System.out.println("[ServidorGeorreferenciador] Iniciando su propio servicio de RMI Registry.");
-            Registry registry = LocateRegistry.createRegistry(4400);
+            Registry registry = LocateRegistry.createRegistry(puerto);
 
             System.out.println("[ServidorGeorreferenciador] Publicando el stub del objeto remoto en el RMI Registry.");
 

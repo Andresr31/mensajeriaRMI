@@ -25,7 +25,7 @@ public class GeorreferenciadorRMI implements Georreferenciador{
         this.conexion = new Conexion();
         this.conectar();
         this.bufferPaquetes = new ArrayList<>();
-        this.servidor = new GeorreferenciadorServer("127.0.0.1", this);
+        this.servidor = new GeorreferenciadorServer("127.0.0.1",4400, this);
     }
     
     //////////////////////////////////////////////////////////////////////

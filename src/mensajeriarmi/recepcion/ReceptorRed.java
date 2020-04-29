@@ -6,6 +6,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import mensajeriarmi.bodega.Bodega;
 import mensajeriarmi.georreferenciacion.Georreferenciador;
+import mensajeriarmi.paquete.Paquete;
 
 /**
  *

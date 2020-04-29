@@ -32,12 +32,13 @@ public class ReceptorPaquetesRMI implements ReceptorPaquetes{
         super();
         this.bufferPaquetes = new ArrayList<>();
        
-        //this.asignarBodega();
+        
         
         this.servidor = new ReceptorServer("127.0.0.1", this);
         this.red = new ReceptorRed("127.0.0.1");
         
         this.asignarGeorreferenciador();
+        this.asignarBodega();
 
     }
     
@@ -55,9 +56,16 @@ public class ReceptorPaquetesRMI implements ReceptorPaquetes{
         return ubicacion;
     }
     
-    public boolean almacenarPaquete(Paquete p){
-        // Solicitar a la bodega almacenar el paquete
-        return false;
+    public String almacenarPaquete(Paquete p){
+        String respuesta = null;
+        try {
+            // Solicitar a la bodega almacenar el paquete
+            respuesta = this.bodega.almacenar(p);
+            
+        } catch (RemoteException ex) {
+            Logger.getLogger(ReceptorPaquetesRMI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return respuesta;
     }
     
     public String procesarPaquete(Paquete p){
@@ -69,6 +77,7 @@ public class ReceptorPaquetesRMI implements ReceptorPaquetes{
         System.out.println("Ubicando: "+p.getNombreEmisor());
         Ubicacion uPaquete = consultarUbicacion(p);
         p.ubicarReceptor(uPaquete);
+        String almacenamiento = this.almacenarPaquete(p);
         
         String respuesta = "";
         respuesta += p.getNombreEmisor() +"\n";
@@ -77,6 +86,7 @@ public class ReceptorPaquetesRMI implements ReceptorPaquetes{
         respuesta += p.getDepartamentoReceptor()+"\n";
         respuesta += p.getUbicacionReceptor().getLatitud()+"\n";
         respuesta += p.getUbicacionReceptor().getLongitud()+"\n";
+        respuesta += "Almacenamiento: "+almacenamiento+"\n\n";
         
         return respuesta;
     }

@@ -31,7 +31,8 @@ public class BodegaRMI implements Bodega{
         this.camiones = new ArrayList<>();
         this.paquetesAlmacenados = new ArrayList<>();
         
-        // this.servidor = new BodegaServidor("127.0.0.1");
+        
+        this.servidor = new BodegaServidor("127.0.0.1",4410,this);
     }
     
     // Métodos remotos (vienen de la interfaz remota)
@@ -39,6 +40,7 @@ public class BodegaRMI implements Bodega{
     public String almacenarPaquete(Paquete p){
         // Manejo de buffer de almacenamiento
         this.paquetesAlmacenados.add(p);
+        System.out.println("Almacenando: "+p.getNombreEmisor());
         return "200:"+this.paquetesAlmacenados.size();
         
     }
@@ -48,7 +50,7 @@ public class BodegaRMI implements Bodega{
     ///////////////////////////////////////////////////////////////////////////
     @Override
     public String almacenar(Paquete paquete) throws RemoteException {
-        return this.almacenar(paquete);
+        return this.almacenarPaquete(paquete);
     }
 
     @Override

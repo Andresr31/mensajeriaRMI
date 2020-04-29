@@ -22,6 +22,15 @@ public class MainCliente {
         p.setPeso(20);
         System.out.println(cliente.registrarPaquete(p));
         
+        Paquete p1 = new Paquete();
+        p1.setNombreEmisor("Andres");
+        p1.setNombreReceptor("David");
+        p1.setCiudadEmisor("Chinchina");
+        p1.setCiudadReceptor("Manizales");
+        p1.setDepartamentoReceptor("Caldas");
+        p1.setPeso(30);
+        System.out.println(cliente.registrarPaquete(p1));
+        
     }
     
     

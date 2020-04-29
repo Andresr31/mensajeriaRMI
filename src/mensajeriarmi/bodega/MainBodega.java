@@ -11,4 +11,8 @@ package mensajeriarmi.bodega;
  */
 public class MainBodega {
     
+    public static void main(String[] args){
+        BodegaRMI bodega = new BodegaRMI();
+    }
+    
 }
