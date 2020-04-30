@@ -9,6 +9,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import mensajeriarmi.paquete.Paquete;
 import mensajeriarmi.paquete.Ubicacion;
+import mensajeriarmi.recepcion.ReceptorPaquetes;
 
 /**
  * @author Carlos Andres Rojas
@@ -16,7 +17,9 @@ import mensajeriarmi.paquete.Ubicacion;
  */
 public interface Georreferenciador extends Remote{
     
-    public Ubicacion georreferenciar(Paquete p)
+    public String georreferenciar(Paquete p, ReceptorPaquetes g)
             throws RemoteException;
+    
+    
     
 }

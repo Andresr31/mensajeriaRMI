@@ -1,6 +1,8 @@
 
 package mensajeriarmi.cliente;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import mensajeriarmi.paquete.Paquete;
 
 /**
@@ -21,6 +23,7 @@ public class MainCliente {
         p.setDepartamentoReceptor("Caldas");
         p.setPeso(20);
         System.out.println(cliente.registrarPaquete(p));
+        
         
         Paquete p1 = new Paquete();
         p1.setNombreEmisor("Andres");

@@ -28,6 +28,20 @@ public class Paquete implements Serializable{
     ///////////////////////////////////////////////////////////////////////////
 
     public Paquete() {
+        this.nombreEmisor = "";
+        this.ciudadEmisor ="";
+        this.nombreReceptor="";
+        this.ciudadReceptor="";
+        this.departamentoReceptor="";
+        this.ubicacionReceptor=new Ubicacion(0, 0);
+        this.fechaRecibido=new Date();
+        this.fechaEnvio= new Date();
+        this.horaRecibido = new Date();
+        this.horaEnvio = new Date();
+        this.estado = ""; // RECIBIDO, ENVIADO, EN PROCESO
+        this.peso = 0;
+        
+     
         
     }
     

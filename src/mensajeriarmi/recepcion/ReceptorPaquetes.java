@@ -11,4 +11,9 @@ import mensajeriarmi.paquete.Paquete;
 public interface ReceptorPaquetes extends Remote{
     public String registrarPaquete(Paquete paquete) 
             throws RemoteException;
+    
+    public String almacenarPaquete(Paquete p)
+            throws RemoteException;
 }
+
+
