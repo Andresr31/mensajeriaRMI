@@ -20,8 +20,8 @@ public class Paquete implements Serializable{
     private Ubicacion ubicacionReceptor;
     private Date fechaRecibido;
     private Date fechaEnvio;
-    private Date horaRecibido;
-    private Date horaEnvio;
+    private String horaRecibido;
+    private String horaEnvio;
     private String estado; // RECIBIDO, ENVIADO, EN PROCESO
     private double peso;
     
@@ -36,14 +36,27 @@ public class Paquete implements Serializable{
         this.ubicacionReceptor=new Ubicacion(0, 0);
         this.fechaRecibido=new Date();
         this.fechaEnvio= new Date();
-        this.horaRecibido = new Date();
-        this.horaEnvio = new Date();
+        this.horaRecibido = "";
+        this.horaEnvio = "";
         this.estado = ""; // RECIBIDO, ENVIADO, EN PROCESO
         this.peso = 0;
         
-     
+    }
+
+    public Paquete(String nombreEmisor, String ciudadEmisor, String nombreReceptor, String ciudadReceptor, String departamentoReceptor, Date fechaRecibido, String horaRecibido, String estado, double peso) {
+        this.nombreEmisor = nombreEmisor;
+        this.ciudadEmisor = ciudadEmisor;
+        this.nombreReceptor = nombreReceptor;
+        this.ciudadReceptor = ciudadReceptor;
+        this.departamentoReceptor = departamentoReceptor;
+        this.fechaRecibido = fechaRecibido;
+        this.horaRecibido = horaRecibido;
+        this.estado = estado;
+        this.peso = peso;
         
     }
+    
+    
     
     ///////////////////////////////////////////////////////////////////////////
 
@@ -103,22 +116,22 @@ public class Paquete implements Serializable{
         this.fechaEnvio = fechaEnvio;
     }
 
-    public Date getHoraRecibido() {
+    public String getHoraRecibido() {
         return horaRecibido;
     }
 
-    public void setHoraRecibido(Date horaRecibido) {
+    public void setHoraRecibido(String horaRecibido) {
         this.horaRecibido = horaRecibido;
     }
 
-    public Date getHoraEnvio() {
+    public String getHoraEnvio() {
         return horaEnvio;
     }
 
-    public void setHoraEnvio(Date horaEnvio) {
+    public void setHoraEnvio(String horaEnvio) {
         this.horaEnvio = horaEnvio;
     }
-
+    
     public String getEstado() {
         return estado;
     }
