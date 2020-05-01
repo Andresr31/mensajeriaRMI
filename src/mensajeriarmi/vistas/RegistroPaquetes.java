@@ -5,18 +5,32 @@
  */
 package mensajeriarmi.vistas;
 
+import java.util.Date;
+import javax.swing.ImageIcon;
+import mensajeriarmi.paquete.Paquete;
+
 /**
  *
  * @author DSO
  */
 public class RegistroPaquetes extends javax.swing.JDialog {
 
+    private Principal ventana;
+
     /**
      * Creates new form RegistroPaquetes
      */
-    public RegistroPaquetes(java.awt.Frame parent, boolean modal) {
+    public RegistroPaquetes(java.awt.Frame parent, boolean modal, Principal v) {
         super(parent, modal);
         initComponents();
+        this.ventana = v;
+        this.setLocationRelativeTo(null);
+        try {
+            this.setIconImage(new ImageIcon(getClass().getResource("/mensajeriarmi/imagenes/paquete.png")).getImage());
+        } catch (Exception e) {
+            System.out.println("no lo veo");
+        }
+
     }
 
     /**
@@ -89,6 +103,11 @@ public class RegistroPaquetes extends javax.swing.JDialog {
 
         btnRegistrarPaquete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mensajeriarmi/imagenes/registrar.png"))); // NOI18N
         btnRegistrarPaquete.setText("Registrar");
+        btnRegistrarPaquete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarPaqueteActionPerformed(evt);
+            }
+        });
 
         btnRegresar.setText("Regresar");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +118,11 @@ public class RegistroPaquetes extends javax.swing.JDialog {
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mensajeriarmi/imagenes/salir.png"))); // NOI18N
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -141,7 +165,7 @@ public class RegistroPaquetes extends javax.swing.JDialog {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel11)
                                     .addComponent(jLabel6))))
-                        .addGap(0, 26, Short.MAX_VALUE))
+                        .addGap(0, 33, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnSalir)))
@@ -194,7 +218,7 @@ public class RegistroPaquetes extends javax.swing.JDialog {
                 .addComponent(btnRegistrarPaquete)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRegresar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(btnSalir)
                 .addGap(29, 29, 29))
         );
@@ -207,7 +231,7 @@ public class RegistroPaquetes extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -218,8 +242,44 @@ public class RegistroPaquetes extends javax.swing.JDialog {
     }//GEN-LAST:event_txtNombreEmisorActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        this.ventana.setVisible(true);
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnRegistrarPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPaqueteActionPerformed
+
+        String nombreE = this.txtNombreEmisor.getText();
+        String ciudadE = this.txtCiudadEmisor.getText();
+        String nombreR = this.txtNombreReceptor.getText();
+        String ciudadR = this.txtCiudadReceptor.getText();
+        String deptoR = this.txtDepartamentoReceptor.getText();
+        double pesoP = Double.parseDouble(this.txtPeso.getText());
+
+        if (!nombreE.isEmpty() && !ciudadE.isEmpty() && !nombreR.isEmpty()
+                && !ciudadR.isEmpty() && !deptoR.isEmpty() && pesoP != 0){
+            
+            String hora = new Date().getHours()+":"+new Date().getMinutes()+":"+new Date().getSeconds();
+            Date fecha = new Date();
+            
+            Paquete p = new Paquete(nombreE, ciudadE, nombreR, ciudadR, deptoR, fecha, hora, "RECIBIDO", pesoP);
+            this.ventana.enviarPaquete(p);
+            this.dispose();
+            this.ventana.setVisible(true);
+            NotificacionEnvioExitoso n = new NotificacionEnvioExitoso(this.ventana, true);
+            n.setVisible(true);
+        }
+        
+        
+    
+        
+    
+        
+        
+    }//GEN-LAST:event_btnRegistrarPaqueteActionPerformed
 
     
 

@@ -7,8 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import mensajeriarmi.paquete.Paquete;
 import mensajeriarmi.paquete.Ubicacion;
+import mensajeriarmi.recepcion.ReceptorPaquetes;
 
 /**
  * @author Carlos Andres Rojas
@@ -20,12 +23,18 @@ public class GeorreferenciadorRMI implements Georreferenciador{
     private GeorreferenciadorServer servidor;
     
     private ArrayList<Paquete> bufferPaquetes;
+    
+    private Procesador procesador;
+    private ReceptorPaquetes receptor;
 
     public GeorreferenciadorRMI() {
         this.conexion = new Conexion();
         this.conectar();
         this.bufferPaquetes = new ArrayList<>();
         this.servidor = new GeorreferenciadorServer("127.0.0.1",4400, this);
+        
+        this.procesador = new Procesador(this);
+        this.procesador.start();
     }
     
     //////////////////////////////////////////////////////////////////////
@@ -37,7 +46,7 @@ public class GeorreferenciadorRMI implements Georreferenciador{
      //////////////////////////////////////////////////////////////////////
     
     public Ubicacion buscarCiudad(String ciudad, String departamento){
-        String sql = "SELECT * FROM ubicaciones WHERE ciudad='"+ciudad+"' AND departamento ='"+departamento+"';";
+        String sql = "SELECT * FROM ubicaciones WHERE ciudad='"+ciudad.toUpperCase()+"' AND departamento ='"+departamento.toUpperCase()+"';";
         Ubicacion u = new Ubicacion(0, 0);
         try (
                 Statement stmt = this.conexion.getConexion().createStatement();
@@ -57,17 +66,27 @@ public class GeorreferenciadorRMI implements Georreferenciador{
         return u;
     }
     
+    public void almacenarPaquete(Paquete p){
+        try {
+            this.receptor.almacenarPaquete(p);
+        } catch (RemoteException ex) {
+            Logger.getLogger(GeorreferenciadorRMI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     
     //////////////////////////////////////////////////////////////////////////
 
     @Override
-    public Ubicacion georreferenciar(Paquete p) throws RemoteException {
+    public String georreferenciar(Paquete p,ReceptorPaquetes r) throws RemoteException {
         // Se carga al buffer y se georreferencian a partir de el
         System.out.println("Georreferenciar: "+p.getNombreEmisor());
-        String ciudadReceptor = p.getCiudadReceptor().toUpperCase();
-        String departamentoReceptor = p.getDepartamentoReceptor().toUpperCase();
-        Ubicacion ubicacion = this.buscarCiudad(ciudadReceptor, departamentoReceptor);
-        return ubicacion;
+        this.receptor = r;
+//        String ciudadReceptor = p.getCiudadReceptor().toUpperCase();
+//        String departamentoReceptor = p.getDepartamentoReceptor().toUpperCase();
+//        Ubicacion ubicacion = this.buscarCiudad(ciudadReceptor, departamentoReceptor);
+        this.procesador.agregarPaquete(p);
+        return "200";
     }
 
     
