@@ -8,6 +8,7 @@ package mensajeriarmi.vistas;
 import javax.swing.ImageIcon;
 import mensajeriarmi.cliente.Cliente;
 import mensajeriarmi.paquete.Paquete;
+import mensajeriarmi.paquete.Ubicacion;
 
 /**
  *
@@ -42,6 +43,12 @@ public class Principal extends javax.swing.JFrame {
         this.cliente.registrarPaquete(p);
     }
     
+    public String solicitarEnvioPaquete(Ubicacion u, double pesoTotal){
+        
+        return this.cliente.solicitarEnvio(u, pesoTotal);
+        
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -71,6 +78,11 @@ public class Principal extends javax.swing.JFrame {
 
         btnSolicitarEnvio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mensajeriarmi/imagenes/enviar.png"))); // NOI18N
         btnSolicitarEnvio.setText("Enviar");
+        btnSolicitarEnvio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSolicitarEnvioActionPerformed(evt);
+            }
+        });
 
         btnRegistrarPaquete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mensajeriarmi/imagenes/registrar.png"))); // NOI18N
         btnRegistrarPaquete.setText("Registrar");
@@ -167,6 +179,12 @@ public class Principal extends javax.swing.JFrame {
        this.setVisible(false);
        r.setVisible(true);
     }//GEN-LAST:event_btnRegistrarPaqueteActionPerformed
+
+    private void btnSolicitarEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSolicitarEnvioActionPerformed
+       SolicitarEnvio s = new SolicitarEnvio(this, true, this);
+       this.setVisible(false);
+       s.setVisible(true);        
+    }//GEN-LAST:event_btnSolicitarEnvioActionPerformed
 
     
     

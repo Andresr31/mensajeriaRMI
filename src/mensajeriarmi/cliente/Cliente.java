@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import mensajeriarmi.bodega.Bodega;
 import mensajeriarmi.paquete.Paquete;
+import mensajeriarmi.paquete.Ubicacion;
 import mensajeriarmi.recepcion.ReceptorPaquetes;
 
 /**
@@ -24,8 +25,9 @@ public class Cliente {
     public Cliente(String nombre) {
     
         this.nombre = nombre;
-        this.red = new RedCliente("127.0.0.1");
+        this.red = new RedCliente("127.0.0.1", "127.0.0.1"); //Host Bodega, Host Receptor
         this.asignarReceptor();
+        this.asignarBodega();
         
     }
     /////////////////////////////////////////////////////////////////////////
@@ -84,6 +86,13 @@ public class Cliente {
         return null;
     }
     
-    
+    public String solicitarEnvio(Ubicacion u, double pesoTotal){
+        try {
+            return this.bodega.solicitarEnvio(u, pesoTotal);
+        } catch (RemoteException ex) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
     
 }

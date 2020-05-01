@@ -7,6 +7,7 @@ package mensajeriarmi.bodega;
 
 import mensajeriarmi.paquete.Paquete;
 import java.rmi.*;
+import mensajeriarmi.paquete.Ubicacion;
 
 /**
  * @author Carlos Andres Rojas
@@ -18,6 +19,6 @@ public interface Bodega extends Remote{
             throws RemoteException;
     
     //agregar parametro => ubicacion ubicacion 
-    public String solicitarEnvio(Paquete paquete)
+    public String solicitarEnvio(Ubicacion ubicacion, double capacidadTotal)
             throws RemoteException;
 }

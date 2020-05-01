@@ -17,13 +17,29 @@ public class ReceptorRed {
     private Registry registroRMIGeo;
     private Registry registroRMIBod;
 
-    public ReceptorRed(String host) {
+    public ReceptorRed(String hostBod, String hostGeo) {
 
-        conectar(host);
-
+        this.conectarBodega(hostBod);
+        this.conectarGeoreferenciador(hostGeo);
+        
     }
 
-    public final void conectar(String host) {
+    public final void conectarBodega(String host) {
+
+        System.setProperty("java.security.policy", "client.policy");
+
+        if (System.getSecurityManager() == null) {
+            System.setSecurityManager(new SecurityManager());
+        }
+
+        try {
+            this.registroRMIBod = LocateRegistry.getRegistry(host,4410);
+        } catch (RemoteException e) {
+            System.out.println("[Cliente] (RemoteException): " + e.getMessage());
+        }
+    }
+    
+    public final void conectarGeoreferenciador(String host) {
 
         System.setProperty("java.security.policy", "client.policy");
 
@@ -33,7 +49,6 @@ public class ReceptorRed {
 
         try {
             this.registroRMIGeo = LocateRegistry.getRegistry(host,4400);
-            this.registroRMIBod = LocateRegistry.getRegistry(host,4410);
         } catch (RemoteException e) {
             System.out.println("[Cliente] (RemoteException): " + e.getMessage());
         }
