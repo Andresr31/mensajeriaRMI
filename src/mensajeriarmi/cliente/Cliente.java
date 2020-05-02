@@ -1,10 +1,13 @@
 
 package mensajeriarmi.cliente;
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import mensajeriarmi.bodega.Bodega;
+import mensajeriarmi.bodega.Camion;
 import mensajeriarmi.paquete.Paquete;
 import mensajeriarmi.paquete.Ubicacion;
 import mensajeriarmi.recepcion.ReceptorPaquetes;
@@ -13,12 +16,12 @@ import mensajeriarmi.recepcion.ReceptorPaquetes;
  *
  * @author Otro
  */
-public class Cliente {
+public class Cliente implements Serializable{
     
     private ReceptorPaquetes receptorPaquetes;
     private Bodega bodega;
     private String nombre;
-    
+   
     private RedCliente red;
 
     /////////////////////////////////////////////////////////////////////////
@@ -79,6 +82,7 @@ public class Cliente {
     
     public String registrarPaquete(Paquete p){
         try {
+            p.setEstado("CREADO");
             return receptorPaquetes.registrarPaquete(p);
         } catch (RemoteException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
@@ -88,11 +92,21 @@ public class Cliente {
     
     public String solicitarEnvio(Ubicacion u, double pesoTotal){
         try {
-            return this.bodega.solicitarEnvio(u, pesoTotal);
+            return this.bodega.solicitarEnvio(u, pesoTotal,this);
         } catch (RemoteException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+    
+    //////////////////////////////////////////////////////////////////////////
+    public void notificarEnvio(Camion c){
+        String mensaje = "Se despachó el camion: id para la ubicación: \n"+c.getDestino().getLatitud()+" - "+c.getDestino().getLongitud()+"\n";
+        mensaje += "\n"+"Paquetes enviados: \n";
+        for (Paquete paquete : c.getPaquetes()) {
+            mensaje += "- Emisor: "+paquete.getNombreEmisor()+" Para: "+paquete.getNombreReceptor()+" \n";
+        }
+        JOptionPane.showMessageDialog(null, mensaje);
     }
     
 }

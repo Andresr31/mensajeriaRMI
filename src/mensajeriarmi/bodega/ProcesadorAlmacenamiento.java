@@ -54,7 +54,7 @@ public class ProcesadorAlmacenamiento extends Thread implements Serializable {
                     this.bodega.almacenarPaquete(p);
                   
                     this.bufferPaquetes.remove(p);
-                    System.out.println("Quedan "+this.bufferPaquetes.size()+" por georreferenciar");
+                    System.out.println("Quedan "+this.bufferPaquetes.size()+" por almacenar");
                     System.out.println("");
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);

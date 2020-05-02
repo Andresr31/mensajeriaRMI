@@ -1,6 +1,7 @@
 
 package mensajeriarmi.cliente;
 
+import java.io.Serializable;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -16,7 +17,7 @@ import mensajeriarmi.recepcion.ReceptorPaquetes;
  * @author David Salgado Ospina
  * 
  */
-public class RedCliente {
+public class RedCliente implements Serializable{
 
     private Registry registroRMIRecep;
     private Registry registroRMIBod;

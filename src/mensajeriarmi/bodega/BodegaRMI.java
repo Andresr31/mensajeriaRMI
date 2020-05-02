@@ -7,6 +7,7 @@ package mensajeriarmi.bodega;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import mensajeriarmi.cliente.Cliente;
 import mensajeriarmi.paquete.Paquete;
 import mensajeriarmi.paquete.Ubicacion;
 
@@ -23,6 +24,8 @@ public class BodegaRMI implements Bodega{
     private ProcesadorAlmacenamiento procesadorAlmacenamiento;
     private ProcesadorEnvio procesadorEnvio;
     
+    private Despachador despachador;
+    
     
     public BodegaRMI(){
         super();
@@ -36,7 +39,8 @@ public class BodegaRMI implements Bodega{
         this.procesadorAlmacenamiento = new ProcesadorAlmacenamiento(this);
         this.procesadorAlmacenamiento.iniciar();
         
-        this.procesadorEnvio = new ProcesadorEnvio(this);
+        this.despachador = new Despachador(this);
+        this.procesadorEnvio = new ProcesadorEnvio(this,this.despachador);
         this.procesadorEnvio.iniciar();
     }
     
@@ -47,12 +51,24 @@ public class BodegaRMI implements Bodega{
     //////////////////////////////////////////////////////////////////////////
     public String almacenarPaquete(Paquete p){
         // Manejo de buffer de almacenamiento
+        p.setEstado("ALMACENADO");
         this.paquetesAlmacenados.add(p);
         System.out.println("Almacenando: "+p.getNombreEmisor());
         System.out.println("Ubicacion: "+p.getUbicacionReceptor().getLatitud());
         return "200:"+this.paquetesAlmacenados.size();
         
     }
+    //////////////////////////////////////////////////////////////////////////
+
+    public ArrayList<Paquete> getPaquetesAlmacenados() {
+        return paquetesAlmacenados;
+    }
+    
+    
+    public void despacharPaquete(Paquete p){
+        this.paquetesAlmacenados.remove(p);
+    }
+    
     
     ///////////////////////////////////////////////////////////////////////////
     @Override
@@ -62,10 +78,11 @@ public class BodegaRMI implements Bodega{
     }
 
     @Override
-    public String solicitarEnvio(Ubicacion ubicacion, double capacidadTotal) throws RemoteException {
-        this.procesadorEnvio.agregarEnvios(ubicacion, capacidadTotal);
+    public String solicitarEnvio(Ubicacion ubicacion, double capacidadTotal, Cliente c) throws RemoteException {
+        this.procesadorEnvio.agregarEnvios(ubicacion, capacidadTotal, c);
         System.out.println("Solicitaron un envio");
         return "--------- Hola Mundo BODEGA";
     }
+    
     
 }
