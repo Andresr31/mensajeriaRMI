@@ -19,6 +19,6 @@ public interface Bodega extends Remote{
             throws RemoteException;
     
     //agregar parametro => ubicacion ubicacion 
-    public String solicitarEnvio(Ubicacion ubicacion, double capacidadCamion)
+    public String solicitarEnvio(Ubicacion ubicacion, double capacidadTotal)
             throws RemoteException;
 }

@@ -31,7 +31,7 @@ public class ReceptorPaquetesRMI implements ReceptorPaquetes{
         super();       
 
         this.servidor = new ReceptorServer("127.0.0.1", this);
-        this.red = new ReceptorRed("127.0.0.1");
+        this.red = new ReceptorRed("127.0.0.1", "127.0.0.1");//Host bodega, Host receptor
         
         this.asignarGeorreferenciador();
         this.asignarBodega();

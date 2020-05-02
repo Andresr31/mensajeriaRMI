@@ -21,6 +21,7 @@ public class BodegaRMI implements Bodega{
     
     private BodegaServidor servidor;
     private ProcesadorAlmacenamiento procesadorAlmacenamiento;
+    private ProcesadorEnvio procesadorEnvio;
     
     private Despachador despachador;
     
@@ -33,11 +34,17 @@ public class BodegaRMI implements Bodega{
         
         
         this.servidor = new BodegaServidor("127.0.0.1",4410,this);
+        
         this.procesadorAlmacenamiento = new ProcesadorAlmacenamiento(this);
         this.procesadorAlmacenamiento.iniciar();
         
+        this.procesadorEnvio = new ProcesadorEnvio(this);
+        this.procesadorEnvio.iniciar();
         this.despachador = new Despachador();
     }
+    
+    
+    //sacar paquete SOLO AL ESTAR EN CAMION
     
     // Métodos remotos (vienen de la interfaz remota)
     //////////////////////////////////////////////////////////////////////////
@@ -50,8 +57,6 @@ public class BodegaRMI implements Bodega{
         
     }
     
-    
-    
     ///////////////////////////////////////////////////////////////////////////
     @Override
     public String almacenar(Paquete paquete) throws RemoteException {
@@ -60,8 +65,10 @@ public class BodegaRMI implements Bodega{
     }
 
     @Override
-    public String solicitarEnvio(Ubicacion ubicacion, double capacidadCamion) throws RemoteException {
-        return "200";
+    public String solicitarEnvio(Ubicacion ubicacion, double capacidadTotal) throws RemoteException {
+        this.procesadorEnvio.agregarEnvios(ubicacion, capacidadTotal);
+        System.out.println("Solicitaron un envio");
+        return "--------- Hola Mundo BODEGA";
     }
     
 }

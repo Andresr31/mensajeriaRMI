@@ -18,14 +18,17 @@ import mensajeriarmi.recepcion.ReceptorPaquetes;
  */
 public class RedCliente {
 
-    private Registry registroRMI;
+    private Registry registroRMIRecep;
+    private Registry registroRMIBod;
 
-    public RedCliente(String host) {
+
+    public RedCliente(String hostBod, String hostRecep) {
         
-        this.conectar(host);
+        this.conectarBodega(hostBod);
+        this.conectarReceptor(hostRecep);
     }
     
-    public final void conectar(String host){
+    public final void conectarBodega(String host){
         
         System.setProperty("java.security.policy", "client.policy");
         
@@ -33,7 +36,23 @@ public class RedCliente {
            System.setSecurityManager(new SecurityManager());
         
         try {
-            this.registroRMI = LocateRegistry.getRegistry(host);
+            this.registroRMIBod = LocateRegistry.getRegistry(host, 4410);
+            
+        }catch(RemoteException e) 
+        {
+            System.out.println("[Cliente] (RemoteException): " + e.getMessage());
+        }
+    }
+    
+    public final void conectarReceptor(String host){
+    
+        System.setProperty("java.security.policy", "client.policy");
+        
+        if (System.getSecurityManager() == null)
+           System.setSecurityManager(new SecurityManager());
+        
+        try {
+            this.registroRMIRecep = LocateRegistry.getRegistry(host, 1099);
             
         }catch(RemoteException e) 
         {
@@ -47,7 +66,7 @@ public class RedCliente {
         
         try {
             
-            receptor = (ReceptorPaquetes) this.registroRMI.lookup("ReceptorPaquetes");
+            receptor = (ReceptorPaquetes) this.registroRMIRecep.lookup("ReceptorPaquetes");
             
         } catch (RemoteException | NotBoundException ex) {
             System.out.println(ex);
@@ -62,7 +81,7 @@ public class RedCliente {
         
         try {
             
-            bodega = (Bodega) this.registroRMI.lookup("Bodega");
+            bodega = (Bodega) this.registroRMIBod.lookup("Bodega");
             
         } catch (RemoteException | NotBoundException ex) {
             System.out.println(ex);
