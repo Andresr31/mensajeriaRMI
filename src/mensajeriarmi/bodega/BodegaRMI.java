@@ -8,6 +8,7 @@ package mensajeriarmi.bodega;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import mensajeriarmi.paquete.Paquete;
+import mensajeriarmi.paquete.Ubicacion;
 
 /**
  * @author Carlos Andres Rojas
@@ -21,6 +22,8 @@ public class BodegaRMI implements Bodega{
     private BodegaServidor servidor;
     private ProcesadorAlmacenamiento procesadorAlmacenamiento;
     
+    private Despachador despachador;
+    
     
     public BodegaRMI(){
         super();
@@ -32,6 +35,8 @@ public class BodegaRMI implements Bodega{
         this.servidor = new BodegaServidor("127.0.0.1",4410,this);
         this.procesadorAlmacenamiento = new ProcesadorAlmacenamiento(this);
         this.procesadorAlmacenamiento.iniciar();
+        
+        this.despachador = new Despachador();
     }
     
     // Métodos remotos (vienen de la interfaz remota)
@@ -55,8 +60,8 @@ public class BodegaRMI implements Bodega{
     }
 
     @Override
-    public String solicitarEnvio(Paquete paquete) throws RemoteException {
-        return "hola mundo";
+    public String solicitarEnvio(Ubicacion ubicacion, double capacidadCamion) throws RemoteException {
+        return "200";
     }
     
 }

@@ -1,0 +1,14 @@
+Prueba:
+
+Destino:
+
+	Medellin: 6.2518 -75.5636   40
+
+Paquetes:
+
+- Cartagena - Bolivar : 10.3997  -75.5144	10
+- Manizales - Caldas : 5.0689 -75.5174		10 * 4
+- Envigado - Antioquia : 6.1759 -75.5917	10 * 2
+- Salamina - Caldas : 5.4073 -75.4875		10 * 3
+- Leticia - Amazonas : -42.153 -69.9406		10
+- Medellin - Antioquia: 6.2518 -75.5636		10 * 1

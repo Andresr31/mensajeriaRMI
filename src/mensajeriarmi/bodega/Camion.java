@@ -16,14 +16,15 @@ import mensajeriarmi.paquete.Ubicacion;
  */
 public class Camion implements Serializable{
     
-    public ArrayList<Paquete> paquetes;
-    public double capacidadTotal; // Peso maximo
-    public double capacidadActual;
-    public Ubicacion destino;
+    private ArrayList<Paquete> paquetes;
+    private double capacidadTotal; // Peso maximo
+    private double capacidadActual;
+    private Ubicacion destino;
 
     public Camion(double capcidadTotal, Ubicacion destino) {
         this.capacidadTotal = capcidadTotal;
         this.destino = destino;
+        this.paquetes = new ArrayList<>();
     }
     
     public boolean agregarPaquete(Paquete paquete){
@@ -42,6 +43,40 @@ public class Camion implements Serializable{
     public double getPesoRestante(){
         return this.capacidadTotal - this.capacidadActual;
     }
+
+    public ArrayList<Paquete> getPaquetes() {
+        return paquetes;
+    }
+
+    public void setPaquetes(ArrayList<Paquete> paquetes) {
+        this.paquetes = paquetes;
+    }
+
+    public double getCapacidadTotal() {
+        return capacidadTotal;
+    }
+
+    public void setCapacidadTotal(double capacidadTotal) {
+        this.capacidadTotal = capacidadTotal;
+    }
+
+    public double getCapacidadActual() {
+        return capacidadActual;
+    }
+
+    public void setCapacidadActual(double capacidadActual) {
+        this.capacidadActual = capacidadActual;
+    }
+
+    public Ubicacion getDestino() {
+        return destino;
+    }
+
+    public void setDestino(Ubicacion destino) {
+        this.destino = destino;
+    }
+    
+    
     
     
 }
