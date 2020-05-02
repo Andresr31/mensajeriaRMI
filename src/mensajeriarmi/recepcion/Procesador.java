@@ -36,6 +36,7 @@ public class Procesador extends Thread implements Serializable {
     }
     
     public void agregarPaquete(Paquete p){
+        p.setEstado("RECIBIDO");
         this.bufferPaquetes.add(p);
         //System.out.println("Paquete agregado");
        // System.out.println(this.bufferPaquetes.size());
@@ -50,6 +51,7 @@ public class Procesador extends Thread implements Serializable {
                     Paquete p = bufferPaquetes.get(i);
                     Thread.sleep(TIEMPO_REGISTRAR);
                     this.receptor.ubicarPaquete(p);
+                    p.setEstado("GEORREFERENCIADO");
                     System.out.println("Procesando paquete: ");
                     String respuesta = "";
                     respuesta += p.getNombreEmisor() +"\n";

@@ -13,10 +13,12 @@ public class Despachador implements Serializable {
 
     private ArrayList<Paquete> paquetesEnvioTemp;
     private ArrayList<Double> distanciasTemp;
+    private BodegaRMI bodega;
 
-    public Despachador() {
+    public Despachador(BodegaRMI b) {
         this.paquetesEnvioTemp = new ArrayList<>();
         this.distanciasTemp = new ArrayList<>();
+        this.bodega=b;
     }
 
     public double calcularDistancia(double latPaquete,
@@ -93,9 +95,13 @@ public class Despachador implements Serializable {
     public Camion cargarCamion(Camion c){
         for (Paquete paquete : paquetesEnvioTemp) {
             if(c.agregarPaquete(paquete)){
-                System.out.println("Paquete agregado destino: "+paquete.getCiudadReceptor());  
+                System.out.println("Paquete agregado destino: "+paquete.getCiudadReceptor());
+                paquete.setEstado("ENVIADO");
+                this.bodega.despacharPaquete(paquete);
             }  
         }
+        this.paquetesEnvioTemp.clear();
+        this.distanciasTemp.clear();
         return c;
     }
 

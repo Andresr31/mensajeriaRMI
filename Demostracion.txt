@@ -12,3 +12,11 @@ Paquetes:
 - Salamina - Caldas : 5.4073 -75.4875		10 * 3
 - Leticia - Amazonas : -42.153 -69.9406		10
 - Medellin - Antioquia: 6.2518 -75.5636		10 * 1
+
+Estados de paquete:
+
+- CREADO
+- RECIBIDO
+- GEORREFERENCIADO
+- ALMACENADO
+- ENVIADO
