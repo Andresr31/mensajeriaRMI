@@ -52,18 +52,18 @@ public class ProcesadorEnvio extends Thread implements Serializable {
         int i = 0;
         for(;;){
             if(bufferCamiones.size() >=1){
-                System.out.println("A punto de cargar un camion");
+                System.out.println("-> A punto de cargar un camion");
                 try {
                     Thread.sleep(TIEMPO_ENVIO);
                     Camion c = bufferCamiones.get(i);
                     //System.out.println("Envia paquete de: "+p.getNombreEmisor()+ "Para: "+p.getCiudadReceptor());
                     //this.bodega.almacenarPaquete(p);
                     this.despachador.despachar(this.bodega.getPaquetesAlmacenados(), c.getDestino(), c);
-                    System.out.println("Camion despachado con "+c.getPaquetes().size()+" paquetes");
+                    System.out.println("-> Camión despachado con "+c.getPaquetes().size()+" paquetes");
                     this.clientesNotificables.get(i).notificarEnvio(c);
                     this.bufferCamiones.remove(c);
                     System.out.println("Quedan "+this.bufferCamiones.size()+" por cargar");
-                    System.out.println("");
+                    System.out.println("////////////////////////////////////////////");
                     
                 } catch (InterruptedException ex) {
                     System.out.println(ex.getMessage());

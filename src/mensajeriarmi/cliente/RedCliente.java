@@ -90,12 +90,6 @@ public class RedCliente implements Serializable{
         
         return bodega;
         
-    }    
-    
-    
-    
-    
-
-
+    }
     
 }

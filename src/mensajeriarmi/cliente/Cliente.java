@@ -101,10 +101,10 @@ public class Cliente implements Serializable{
     
     //////////////////////////////////////////////////////////////////////////
     public void notificarEnvio(Camion c){
-        String mensaje = "Se despachó el camion: id para la ubicación: \n"+c.getDestino().getLatitud()+" - "+c.getDestino().getLongitud()+"\n";
+        String mensaje = "Se despachó el camion: "+ c.getId() +" para la ubicación: \n"+"Latitud: "+c.getDestino().getLatitud()+"\n"+"Longitud: "+c.getDestino().getLongitud()+"\n";
         mensaje += "\n"+"Paquetes enviados: \n";
         for (Paquete paquete : c.getPaquetes()) {
-            mensaje += "- Emisor: "+paquete.getNombreEmisor()+" Para: "+paquete.getNombreReceptor()+" \n";
+            mensaje += "- Emisor: "+paquete.getNombreEmisor()+" --- Receptor: "+paquete.getNombreReceptor()+" \n";
         }
         JOptionPane.showMessageDialog(null, mensaje);
     }

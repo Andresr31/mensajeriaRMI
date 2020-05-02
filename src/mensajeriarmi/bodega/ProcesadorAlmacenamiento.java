@@ -46,16 +46,17 @@ public class ProcesadorAlmacenamiento extends Thread implements Serializable {
         int i = 0;
         for(;;){
             if(bufferPaquetes.size() >=1){
-                System.out.println("A punto de almacenar un paquete");
+                System.out.println("////////////////////////////////////////////");
+                System.out.println("\n-> A punto de almacenar un paquete");
                 try {
                     Thread.sleep(TIEMPO_ALMACENAMIENTO);
                     Paquete p = bufferPaquetes.get(i);
-                    System.out.println("Almacenando paquete de: "+p.getNombreEmisor()+ "Para: "+p.getCiudadReceptor());
+                    System.out.println("--> Almacenando paquete\n---> De: "+p.getNombreEmisor()+ "\n---> Para: "+p.getCiudadReceptor());
                     this.bodega.almacenarPaquete(p);
                   
                     this.bufferPaquetes.remove(p);
-                    System.out.println("Quedan "+this.bufferPaquetes.size()+" por almacenar");
-                    System.out.println("");
+                    System.out.println("-> Quedan "+this.bufferPaquetes.size()+" por almacenar");
+                    System.out.println("////////////////////////////////////////////");
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);
                 } 

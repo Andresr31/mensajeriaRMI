@@ -53,8 +53,9 @@ public class BodegaRMI implements Bodega{
         // Manejo de buffer de almacenamiento
         p.setEstado("ALMACENADO");
         this.paquetesAlmacenados.add(p);
-        System.out.println("Almacenando: "+p.getNombreEmisor());
-        System.out.println("Ubicacion: "+p.getUbicacionReceptor().getLatitud());
+        System.out.println("-> Almacenando Bodega (Emisor) : "+p.getNombreEmisor());
+        System.out.println("--> Latitud destino: "+p.getUbicacionReceptor().getLatitud());
+        System.out.println("--> Longitud destino: "+p.getUbicacionReceptor().getLongitud());
         return "200:"+this.paquetesAlmacenados.size();
         
     }
@@ -80,8 +81,9 @@ public class BodegaRMI implements Bodega{
     @Override
     public String solicitarEnvio(Ubicacion ubicacion, double capacidadTotal, Cliente c) throws RemoteException {
         this.procesadorEnvio.agregarEnvios(ubicacion, capacidadTotal, c);
-        System.out.println("Solicitaron un envio");
-        return "--------- Hola Mundo BODEGA";
+        System.out.println("////////////////////////////////////////////");
+        System.out.println("-> Solicitaron un envio");
+        return "200, Solicitud de envio";
     }
     
     

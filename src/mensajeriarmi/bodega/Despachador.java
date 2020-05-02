@@ -71,8 +71,8 @@ public class Despachador implements Serializable {
         for (int i = 0; i < this.paquetesEnvioTemp.size(); i++) {
             Paquete p = this.paquetesEnvioTemp.get(i);
             double d = this.distanciasTemp.get(i);
-            
-            System.out.println(i+1+" "+p.getCiudadReceptor() +" : "+d);
+            System.out.println("\nPrioridad -- Ciudad Receptor -- Distancia\n");
+            System.out.println(i+1+"   "+p.getCiudadReceptor() +"   "+d);
         }
     }
 
@@ -95,7 +95,7 @@ public class Despachador implements Serializable {
     public Camion cargarCamion(Camion c){
         for (Paquete paquete : paquetesEnvioTemp) {
             if(c.agregarPaquete(paquete)){
-                System.out.println("Paquete agregado destino: "+paquete.getCiudadReceptor());
+                System.out.println("-> Paquete agregado destino: "+paquete.getCiudadReceptor());
                 paquete.setEstado("ENVIADO");
                 this.bodega.despacharPaquete(paquete);
             }  
