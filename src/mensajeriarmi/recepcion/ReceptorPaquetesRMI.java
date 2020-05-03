@@ -8,10 +8,11 @@ package mensajeriarmi.recepcion;
 import java.rmi.RemoteException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import mensajeriarmi.bodega.Bodega;
-import mensajeriarmi.georreferenciacion.Georreferenciador;
+import mensajeriarmi.objetos.Bodega;
+import mensajeriarmi.objetos.Georreferenciador;
 import mensajeriarmi.paquete.Paquete;
 import mensajeriarmi.paquete.Ubicacion;
+import mensajeriarmi.objetos.ReceptorPaquetes;
 
 /**
  * @author Carlos Andres Rojas

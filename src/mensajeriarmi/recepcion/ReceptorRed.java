@@ -4,9 +4,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import mensajeriarmi.bodega.Bodega;
-import mensajeriarmi.georreferenciacion.Georreferenciador;
-import mensajeriarmi.paquete.Paquete;
+import mensajeriarmi.objetos.Bodega;
+import mensajeriarmi.objetos.Georreferenciador;
 
 /**
  *

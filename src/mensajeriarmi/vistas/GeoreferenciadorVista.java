@@ -5,18 +5,29 @@
  */
 package mensajeriarmi.vistas;
 
+import javax.swing.ImageIcon;
+import mensajeriarmi.georreferenciacion.GeorreferenciadorRMI;
+
 /**
  *
  * @author DSO
  */
-public class Georeferenciador extends javax.swing.JDialog {
+public class GeoreferenciadorVista extends javax.swing.JDialog {
 
     /**
      * Creates new form Georeferenciador
      */
-    public Georeferenciador(java.awt.Frame parent, boolean modal) {
+    public GeoreferenciadorVista(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
+        try {
+            this.setIconImage(new ImageIcon(getClass().getResource("/mensajeriarmi/imagenes/paquete.png")).getImage());
+        } catch (Exception e) {
+            System.out.println("no lo veo");
+        }
+        this.setVisible(true);
+        GeorreferenciadorRMI g = new GeorreferenciadorRMI();
     }
 
     /**
@@ -100,7 +111,7 @@ public class Georeferenciador extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApagarActionPerformed
-        // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_btnApagarActionPerformed
 
     

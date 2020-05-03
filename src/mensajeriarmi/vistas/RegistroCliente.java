@@ -6,7 +6,7 @@
 package mensajeriarmi.vistas;
 
 import javax.swing.ImageIcon;
-import mensajeriarmi.cliente.Cliente;
+import mensajeriarmi.cliente.ClienteRMI;
 
 /**
  *
@@ -155,7 +155,7 @@ public class RegistroCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.inicio.setCliente(new Cliente(this.txtNombre.getText()));
+        this.inicio.setCliente(new ClienteRMI(this.txtNombre.getText()));
         this.inicio.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

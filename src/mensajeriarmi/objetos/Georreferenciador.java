@@ -3,13 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mensajeriarmi.georreferenciacion;
+package mensajeriarmi.objetos;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import mensajeriarmi.paquete.Paquete;
-import mensajeriarmi.paquete.Ubicacion;
-import mensajeriarmi.recepcion.ReceptorPaquetes;
 
 /**
  * @author Carlos Andres Rojas

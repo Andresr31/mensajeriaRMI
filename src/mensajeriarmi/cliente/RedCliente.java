@@ -8,8 +8,8 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import mensajeriarmi.bodega.Bodega;
-import mensajeriarmi.recepcion.ReceptorPaquetes;
+import mensajeriarmi.objetos.Bodega;
+import mensajeriarmi.objetos.ReceptorPaquetes;
 
 /**
  *

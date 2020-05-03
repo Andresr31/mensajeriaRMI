@@ -5,6 +5,8 @@
  */
 package mensajeriarmi.recepcion;
 
+import mensajeriarmi.vistas.ReceptorPaquetesVista;
+
 /**
  *
  * @author Otro
@@ -12,7 +14,8 @@ package mensajeriarmi.recepcion;
 public class MainReceptor {
     
     public static void main(String[] args){
-        ReceptorPaquetesRMI receptor = new ReceptorPaquetesRMI();
+//        ReceptorPaquetesRMI receptor = new ReceptorPaquetesRMI();
+        ReceptorPaquetesVista vista = new ReceptorPaquetesVista(null, false);
     }
     
 }

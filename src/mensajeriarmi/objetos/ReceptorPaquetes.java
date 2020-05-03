@@ -1,6 +1,7 @@
 
-package mensajeriarmi.recepcion;
+package mensajeriarmi.objetos;
 
+import mensajeriarmi.recepcion.*;
 import java.rmi.*;
 import mensajeriarmi.paquete.Paquete;
 

@@ -5,6 +5,8 @@
  */
 package mensajeriarmi.georreferenciacion;
 
+import mensajeriarmi.vistas.GeoreferenciadorVista;
+
 /**
  *
  * @author Otro
@@ -13,7 +15,8 @@ public class MainGeorreferenciador {
     
     public static void main (String[] args){
         
-        GeorreferenciadorRMI g = new GeorreferenciadorRMI();
+        //GeorreferenciadorRMI g = new GeorreferenciadorRMI();
+        GeoreferenciadorVista vista = new GeoreferenciadorVista(null, false);
         
     }
     

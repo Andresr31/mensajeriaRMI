@@ -8,6 +8,7 @@ package mensajeriarmi.bodega;
 import java.util.ArrayList;
 import mensajeriarmi.paquete.Paquete;
 import mensajeriarmi.paquete.Ubicacion;
+import mensajeriarmi.vistas.BodegaVista;
 
 /**
  *
@@ -16,7 +17,8 @@ import mensajeriarmi.paquete.Ubicacion;
 public class MainBodega {
     
     public static void main(String[] args){
-        BodegaRMI bodega = new BodegaRMI();
+        BodegaVista bodegaV = new BodegaVista(null, false);
+        //BodegaRMI bodega = new BodegaRMI();
         
 //        Despachador d = new Despachador();
 //        Paquete p = new Paquete();

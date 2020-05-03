@@ -81,7 +81,9 @@ public class Despachador implements Serializable {
             Ubicacion ubicacionR = paquete.getUbicacionReceptor();
             double distancia = calcularDistancia(ubicacionR.getLatitud(), destino.getLatitud(),
                     ubicacionR.getLongitud(), destino.getLongitud());
-
+            if(distancia >= 1000){
+                continue;
+            }
             this.distanciasTemp.add(distancia);
             this.paquetesEnvioTemp.add(paquete);
         }

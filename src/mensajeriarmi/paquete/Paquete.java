@@ -14,6 +14,7 @@ public class Paquete implements Serializable{
     
     private String nombreEmisor;
     private String ciudadEmisor;
+    private String departamentoEmisor;
     private String nombreReceptor;
     private String ciudadReceptor;
     private String departamentoReceptor;
@@ -25,6 +26,8 @@ public class Paquete implements Serializable{
     private String estado; // RECIBIDO, ENVIADO, EN PROCESO
     private double peso;
     private int id;
+    
+    public static int autoincremento;
     
     ///////////////////////////////////////////////////////////////////////////
 
@@ -41,15 +44,17 @@ public class Paquete implements Serializable{
         this.horaEnvio = "";
         this.estado = ""; // RECIBIDO, ENVIADO, EN PROCESO
         this.peso = 0;
-        this.id++;
+        Paquete.autoincremento ++;
+        this.id = Paquete.autoincremento;
         
     }
 
-    public Paquete(String nombreEmisor, String ciudadEmisor, String nombreReceptor, String ciudadReceptor, String departamentoReceptor, Date fechaRecibido, String horaRecibido, String estado, double peso) {
+    public Paquete(String nombreEmisor, String ciudadEmisor,String departamentoE, String nombreReceptor, String ciudadReceptor, String departamentoReceptor, Date fechaRecibido, String horaRecibido, String estado, double peso) {
         this.nombreEmisor = nombreEmisor;
         this.ciudadEmisor = ciudadEmisor;
         this.nombreReceptor = nombreReceptor;
         this.ciudadReceptor = ciudadReceptor;
+        this.departamentoEmisor = departamentoE;
         this.departamentoReceptor = departamentoReceptor;
         this.fechaRecibido = fechaRecibido;
         this.horaRecibido = horaRecibido;

@@ -7,9 +7,11 @@ package mensajeriarmi.bodega;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import mensajeriarmi.cliente.Cliente;
+import mensajeriarmi.cliente.ClienteRMI;
+import mensajeriarmi.objetos.Bodega;
 import mensajeriarmi.paquete.Paquete;
 import mensajeriarmi.paquete.Ubicacion;
+
 
 /**
  * @author Carlos Andres Rojas
@@ -79,7 +81,7 @@ public class BodegaRMI implements Bodega{
     }
 
     @Override
-    public String solicitarEnvio(Ubicacion ubicacion, double capacidadTotal, Cliente c) throws RemoteException {
+    public String solicitarEnvio(Ubicacion ubicacion, double capacidadTotal, ClienteRMI c) throws RemoteException {
         this.procesadorEnvio.agregarEnvios(ubicacion, capacidadTotal, c);
         System.out.println("////////////////////////////////////////////");
         System.out.println("-> Solicitaron un envio");

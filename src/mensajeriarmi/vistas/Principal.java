@@ -6,7 +6,7 @@
 package mensajeriarmi.vistas;
 
 import javax.swing.ImageIcon;
-import mensajeriarmi.cliente.Cliente;
+import mensajeriarmi.cliente.ClienteRMI;
 import mensajeriarmi.paquete.Paquete;
 import mensajeriarmi.paquete.Ubicacion;
 
@@ -16,7 +16,7 @@ import mensajeriarmi.paquete.Ubicacion;
  */
 public class Principal extends javax.swing.JFrame {
 
-    private Cliente cliente;
+    private ClienteRMI cliente;
     /**
      * Creates new form registroCliente
      */
@@ -30,11 +30,11 @@ public class Principal extends javax.swing.JFrame {
         }
     }
 
-    public Cliente getCliente() {
+    public ClienteRMI getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(ClienteRMI cliente) {
         this.cliente = cliente;
         this.jlNombre.setText(this.cliente.getNombre());
     }
@@ -115,29 +115,32 @@ public class Principal extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addComponent(btnSolicitarEnvio)
+                .addGap(18, 18, 18)
+                .addComponent(btnRegistrarPaquete)
+                .addGap(0, 57, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVerEnvios)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSalir)
-                .addGap(22, 22, 22))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(9, 9, 9))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(54, 54, 54))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jlNombre)
-                        .addGap(72, 72, 72))
-                    .addComponent(jLabel3)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnSolicitarEnvio)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRegistrarPaquete)))
-                .addGap(0, 56, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnVerEnvios)
+                        .addGap(28, 28, 28)
+                        .addComponent(btnSalir)
+                        .addGap(22, 22, 22))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(9, 9, 9))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(54, 54, 54))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jlNombre)
+                                .addGap(72, 72, 72))
+                            .addComponent(jLabel3))
+                        .addGap(82, 82, 82))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

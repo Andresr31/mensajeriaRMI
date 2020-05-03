@@ -21,11 +21,15 @@ public class Camion implements Serializable{
     private double capacidadActual;
     private Ubicacion destino;
     private int id;
+    
+    public static int autoincremento;
 
     public Camion(double capcidadTotal, Ubicacion destino) {
         this.capacidadTotal = capcidadTotal;
         this.destino = destino;
         this.paquetes = new ArrayList<>();
+        Camion.autoincremento ++;
+        this.id = Camion.autoincremento;
     }
     
     public boolean agregarPaquete(Paquete paquete){

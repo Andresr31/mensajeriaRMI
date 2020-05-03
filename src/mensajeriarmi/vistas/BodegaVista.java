@@ -5,18 +5,30 @@
  */
 package mensajeriarmi.vistas;
 
+import javax.swing.ImageIcon;
+import mensajeriarmi.bodega.BodegaRMI;
+
 /**
  *
  * @author DSO
  */
-public class Bodega extends javax.swing.JDialog {
+public class BodegaVista extends javax.swing.JDialog {
 
     /**
      * Creates new form Bodega
      */
-    public Bodega(java.awt.Frame parent, boolean modal) {
+    public BodegaVista(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
+        try {
+            this.setIconImage(new ImageIcon(getClass().getResource("/mensajeriarmi/imagenes/paquete.png")).getImage());
+        } catch (Exception e) {
+            System.out.println("no lo veo");
+        }
+        this.setVisible(true);
+        BodegaRMI bodega = new BodegaRMI();
+        
     }
 
     /**
@@ -98,7 +110,7 @@ public class Bodega extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApagarActionPerformed
-        // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_btnApagarActionPerformed
 
     

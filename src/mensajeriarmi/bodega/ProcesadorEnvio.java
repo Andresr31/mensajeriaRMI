@@ -6,10 +6,11 @@
 package mensajeriarmi.bodega;
 
 import java.io.Serializable;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import mensajeriarmi.cliente.Cliente;
+import mensajeriarmi.objetos.Cliente;
 import mensajeriarmi.paquete.Paquete;
 import mensajeriarmi.paquete.Ubicacion;
 
@@ -60,13 +61,15 @@ public class ProcesadorEnvio extends Thread implements Serializable {
                     //this.bodega.almacenarPaquete(p);
                     this.despachador.despachar(this.bodega.getPaquetesAlmacenados(), c.getDestino(), c);
                     System.out.println("-> Camión despachado con "+c.getPaquetes().size()+" paquetes");
-                    this.clientesNotificables.get(i).notificarEnvio(c);
+                    this.clientesNotificables.get(i).notificar(c);
                     this.bufferCamiones.remove(c);
                     System.out.println("Quedan "+this.bufferCamiones.size()+" por cargar");
                     System.out.println("////////////////////////////////////////////");
                     
                 } catch (InterruptedException ex) {
                     System.out.println(ex.getMessage());
+                } catch (RemoteException ex) {
+                    Logger.getLogger(ProcesadorEnvio.class.getName()).log(Level.SEVERE, null, ex);
                 } 
             }else{
                 System.getProperties();

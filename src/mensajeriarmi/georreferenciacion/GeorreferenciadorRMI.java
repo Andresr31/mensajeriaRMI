@@ -1,7 +1,6 @@
 
 package mensajeriarmi.georreferenciacion;
 
-import java.net.UnknownHostException;
 import java.rmi.RemoteException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,9 +8,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import mensajeriarmi.objetos.Georreferenciador;
 import mensajeriarmi.paquete.Paquete;
 import mensajeriarmi.paquete.Ubicacion;
-import mensajeriarmi.recepcion.ReceptorPaquetes;
+import mensajeriarmi.objetos.ReceptorPaquetes;
 
 /**
  * @author Carlos Andres Rojas

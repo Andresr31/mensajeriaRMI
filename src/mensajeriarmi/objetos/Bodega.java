@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mensajeriarmi.bodega;
+package mensajeriarmi.objetos;
 
+import mensajeriarmi.bodega.*;
 import mensajeriarmi.paquete.Paquete;
 import java.rmi.*;
-import mensajeriarmi.cliente.Cliente;
+import mensajeriarmi.cliente.ClienteRMI;
 import mensajeriarmi.paquete.Ubicacion;
 
 /**
@@ -20,6 +21,6 @@ public interface Bodega extends Remote{
             throws RemoteException;
     
     //agregar parametro => ubicacion ubicacion 
-    public String solicitarEnvio(Ubicacion ubicacion, double capacidadTotal, Cliente c)
+    public String solicitarEnvio(Ubicacion ubicacion, double capacidadTotal, ClienteRMI c)
             throws RemoteException;
 }
