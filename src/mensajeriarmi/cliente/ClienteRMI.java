@@ -18,7 +18,7 @@ import mensajeriarmi.objetos.ReceptorPaquetes;
  *
  * @author Otro
  */
-public class ClienteRMI implements Cliente{
+public class ClienteRMI implements Serializable{
     
     private ReceptorPaquetes receptorPaquetes;
     private Bodega bodega;
@@ -111,18 +111,18 @@ public class ClienteRMI implements Cliente{
     //////////////////////////////////////////////////////////////////////////
     public void notificarEnvio(Camion c){
         this.enviosRegistrados.add(c);
-        String mensaje = "Se ha despachado un envio con exito!\n\n para mas información abrir ver envios";
-//        String mensaje = "Se despachó el camion: "+ c.getId() +" para la ubicación: \n"+"Latitud: "+c.getDestino().getLatitud()+"\n"+"Longitud: "+c.getDestino().getLongitud()+"\n";
-//        mensaje += "\n"+"Paquetes enviados: \n";
-//        for (Paquete paquete : c.getPaquetes()) {
-//            mensaje += "- Emisor: "+paquete.getNombreEmisor()+" --- Receptor: "+paquete.getNombreReceptor()+" \n";
-//        }
+        System.out.println("Notificaron un envio al cliente");
+        //String mensaje = "Se ha despachado un envio con exito!\n\n para mas información abrir ver envios";
+        String mensaje = "Se despachó el camion: "+ c.getId() +" para la ubicación: \n"+"Latitud: "+c.getDestino().getLatitud()+"\n"+"Longitud: "+c.getDestino().getLongitud()+"\n";
+        mensaje += "\n"+"Paquetes enviados: \n";
+        mensaje = c.getPaquetes().stream().map((paquete) -> "- Emisor: "+paquete.getNombreEmisor()+" --- Receptor: "+paquete.getNombreReceptor()+" \n").reduce(mensaje, String::concat);
         JOptionPane.showMessageDialog(null, mensaje);
     }
 
-    @Override
-    public void notificar(Camion c) throws RemoteException {
-        this.notificarEnvio(c);
-    }
+//    @Override
+//    public void notificar(Camion c) throws RemoteException {
+//        this.notificarEnvio(c);
+//        System.out.println(this.enviosRegistrados.size());
+//    }
     
 }

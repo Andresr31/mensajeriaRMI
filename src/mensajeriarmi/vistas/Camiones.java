@@ -5,7 +5,10 @@
  */
 package mensajeriarmi.vistas;
 
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
+import mensajeriarmi.bodega.Camion;
 
 /**
  *
@@ -16,7 +19,7 @@ public class Camiones extends javax.swing.JDialog {
     /**
      * Creates new form Camiones
      */
-    public Camiones(java.awt.Frame parent, boolean modal) {
+    public Camiones(java.awt.Frame parent, boolean modal, ArrayList<Camion> camiones) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -25,6 +28,8 @@ public class Camiones extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("no lo veo");
         }
+        this.llenarTabla(camiones);
+        System.out.println(camiones.size());
     }
 
     /**
@@ -56,7 +61,7 @@ public class Camiones extends javax.swing.JDialog {
                 {null, null, null, null}
             },
             new String [] {
-                "ID Camión", "ID Paquete", "Origen", "Destino"
+                "ID Camión", "Numero de paqutes", "Latitud destino", "Longitud destino"
             }
         ) {
             Class[] types = new Class [] {
@@ -156,14 +161,29 @@ public class Camiones extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    
+    public void llenarTabla(ArrayList<Camion> camiones){
+        
+        DefaultTableModel model = new DefaultTableModel();
+        
+        model.addColumn("Id Camión");
+        model.addColumn("Número de paquetes");
+        model.addColumn("Latitud destino");
+        model.addColumn("Longitud destino");
+
+        for (Camion camion : camiones) {
+            model.addRow(new Object[]{camion.getId(),camion.getPaquetes().size(),camion.getDestino().getLatitud(),camion.getDestino().getLongitud()});
+        }
+        
+        this.jTable1.setModel(model);
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegresar;

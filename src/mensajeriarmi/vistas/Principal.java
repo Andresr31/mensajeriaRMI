@@ -109,6 +109,11 @@ public class Principal extends javax.swing.JFrame {
         });
 
         btnVerEnvios.setText("Ver envios");
+        btnVerEnvios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerEnviosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -197,6 +202,11 @@ public class Principal extends javax.swing.JFrame {
        this.setVisible(false);
        s.setVisible(true);        
     }//GEN-LAST:event_btnSolicitarEnvioActionPerformed
+
+    private void btnVerEnviosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerEnviosActionPerformed
+        Camiones lista = new Camiones(this, true, this.cliente.getEnviosRegistrados());
+        lista.setVisible(true);
+    }//GEN-LAST:event_btnVerEnviosActionPerformed
 
     
     
