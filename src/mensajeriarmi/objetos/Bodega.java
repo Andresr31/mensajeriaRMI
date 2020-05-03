@@ -8,6 +8,7 @@ package mensajeriarmi.objetos;
 import mensajeriarmi.bodega.*;
 import mensajeriarmi.paquete.Paquete;
 import java.rmi.*;
+import java.util.ArrayList;
 import mensajeriarmi.cliente.ClienteRMI;
 import mensajeriarmi.paquete.Ubicacion;
 
@@ -23,4 +24,6 @@ public interface Bodega extends Remote{
     //agregar parametro => ubicacion ubicacion 
     public String solicitarEnvio(Ubicacion ubicacion, double capacidadTotal, ClienteRMI c)
             throws RemoteException;
+    
+    public ArrayList<Camion> obtenerRegistroCamiones()throws RemoteException;
 }

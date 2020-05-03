@@ -105,7 +105,12 @@ public class ClienteRMI implements Serializable{
     }
 
     public ArrayList<Camion> getEnviosRegistrados() {
-        return enviosRegistrados;
+        try {
+            return this.bodega.obtenerRegistroCamiones();
+        } catch (RemoteException ex) {
+            Logger.getLogger(ClienteRMI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
     //////////////////////////////////////////////////////////////////////////

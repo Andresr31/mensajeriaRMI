@@ -72,6 +72,14 @@ public class BodegaRMI implements Bodega{
         this.paquetesAlmacenados.remove(p);
     }
     
+    public void almacenarRegistroCamion(Camion c){
+        this.camiones.add(c);
+    }
+    
+    @Override
+    public ArrayList<Camion> obtenerRegistroCamiones(){
+        return this.camiones;
+    }
     
     ///////////////////////////////////////////////////////////////////////////
     @Override

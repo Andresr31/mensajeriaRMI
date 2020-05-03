@@ -5,9 +5,12 @@
  */
 package mensajeriarmi.vistas;
 
+import java.awt.Point;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import mensajeriarmi.bodega.Camion;
 
 /**
@@ -77,6 +80,11 @@ public class Camiones extends javax.swing.JDialog {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTable1MousePressed(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -167,6 +175,19 @@ public class Camiones extends javax.swing.JDialog {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
+        
+        if (evt.getClickCount() > 1) {
+        Point point = evt.getPoint();
+        int row = jTable1.rowAtPoint(point);
+        int column = jTable1.columnAtPoint(point);
+        TableModel model = jTable1.getModel();
+        JOptionPane.showMessageDialog(this, model.getValueAt(row, column));
+    }
+        
+        
+    }//GEN-LAST:event_jTable1MousePressed
 
     public void llenarTabla(ArrayList<Camion> camiones){
         
