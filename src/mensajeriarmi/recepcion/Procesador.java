@@ -46,18 +46,19 @@ public class Procesador extends Thread implements Serializable {
         int i = 0;
         for(;;){
             if(bufferPaquetes.size() >=1){
-                System.out.println("A punto de procesar un paquete");
+                System.out.println("////////////////////////////////////////////");
+                System.out.println("-> A punto de procesar un paquete");
                 try {
                     Paquete p = bufferPaquetes.get(i);
                     Thread.sleep(TIEMPO_REGISTRAR);
                     this.receptor.ubicarPaquete(p);
                     p.setEstado("GEORREFERENCIADO");
-                    System.out.println("Procesando paquete: ");
+                    System.out.println("--> Procesando paquete: ");
                     String respuesta = "";
-                    respuesta += p.getNombreEmisor() +"\n";
-                    respuesta += p.getNombreReceptor()+"\n";
-                    respuesta += p.getCiudadReceptor()+"\n";
-                    respuesta += p.getDepartamentoReceptor()+"\n";
+                    respuesta += "---> Emisor: " + p.getNombreEmisor() +"\n";
+                    respuesta += "---> Receptor: " + p.getNombreReceptor()+"\n";
+                    respuesta += "---> Ciudad receptor: " + p.getCiudadReceptor()+"\n";
+                    respuesta += "---> Departamento receptor: " + p.getDepartamentoReceptor()+"\n";
 //                    respuesta += p.getUbicacionReceptor().getLatitud()+"\n";
 //                    respuesta += p.getUbicacionReceptor().getLongitud()+"\n";
                     //this.receptor.almacenarPaquete(p);
@@ -66,8 +67,8 @@ public class Procesador extends Thread implements Serializable {
                     System.out.println(respuesta);
                     this.procesoActual = respuesta;
                     this.bufferPaquetes.remove(p);
-                    System.out.println("Quedan "+this.bufferPaquetes.size()+" por procesar");
-                    System.out.println("");
+                    System.out.println("-> Quedan "+this.bufferPaquetes.size()+" paquetes por procesar");
+                    System.out.println("////////////////////////////////////////////");
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);
                 } 

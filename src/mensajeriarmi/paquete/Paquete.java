@@ -24,6 +24,7 @@ public class Paquete implements Serializable{
     private String horaEnvio;
     private String estado; // RECIBIDO, ENVIADO, EN PROCESO
     private double peso;
+    private int id;
     
     ///////////////////////////////////////////////////////////////////////////
 
@@ -40,6 +41,7 @@ public class Paquete implements Serializable{
         this.horaEnvio = "";
         this.estado = ""; // RECIBIDO, ENVIADO, EN PROCESO
         this.peso = 0;
+        this.id++;
         
     }
 
@@ -146,6 +148,14 @@ public class Paquete implements Serializable{
 
     public void setPeso(double peso) {
         this.peso = peso;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     //////////////////////////////////////////////////////////////////////////

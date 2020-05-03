@@ -20,6 +20,7 @@ public class Camion implements Serializable{
     private double capacidadTotal; // Peso maximo
     private double capacidadActual;
     private Ubicacion destino;
+    private int id;
 
     public Camion(double capcidadTotal, Ubicacion destino) {
         this.capacidadTotal = capcidadTotal;
@@ -75,8 +76,13 @@ public class Camion implements Serializable{
     public void setDestino(Ubicacion destino) {
         this.destino = destino;
     }
-    
-    
-    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
 }

@@ -80,7 +80,10 @@ public class GeorreferenciadorRMI implements Georreferenciador{
     @Override
     public String georreferenciar(Paquete p,ReceptorPaquetes r) throws RemoteException {
         // Se carga al buffer y se georreferencian a partir de el
-        System.out.println("Georreferenciar: "+p.getNombreEmisor());
+        System.out.println("\n////////////////////////////////////////////\n");
+        System.out.println("-> Georreferenciar con destino: "+p.getCiudadReceptor());
+        System.out.println("-> Georreferenciar de: "+p.getCiudadEmisor());
+        System.out.println("-> Georreferenciar para: "+p.getCiudadReceptor());
         this.receptor = r;
 //        String ciudadReceptor = p.getCiudadReceptor().toUpperCase();
 //        String departamentoReceptor = p.getDepartamentoReceptor().toUpperCase();

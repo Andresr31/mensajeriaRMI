@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Otro/Documents/NetBeansProjects/MensajeriaRMI/src/mensajeriarmi/cliente/Cliente.java</file>
             <file>file:/C:/Users/Otro/Documents/NetBeansProjects/MensajeriaRMI/src/mensajeriarmi/georreferenciacion/GeorreferenciadorRMI.java</file>
             <file>file:/C:/Users/Otro/Documents/NetBeansProjects/MensajeriaRMI/src/mensajeriarmi/georreferenciacion/Procesador.java</file>
@@ -10,12 +11,30 @@
             <file>file:/C:/Users/Otro/Documents/NetBeansProjects/MensajeriaRMI/src/mensajeriarmi/recepcion/ReceptorPaquetesRMI.java</file>
             <file>file:/C:/Users/Otro/Documents/NetBeansProjects/MensajeriaRMI/src/mensajeriarmi/cliente/MainCliente.java</file>
             <file>file:/C:/Users/Otro/Documents/NetBeansProjects/MensajeriaRMI/src/mensajeriarmi/bodega/Bodega.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/Users/DSO/Downloads/distribuidos/RMI/mensajeriaRMI/src/mensajeriarmi/recepcion/ReceptorServer.java</file>
+            <file>file:/Users/DSO/Downloads/distribuidos/RMI/mensajeriaRMI/src/mensajeriarmi/recepcion/Procesador.java</file>
+            <file>file:/Users/DSO/Downloads/distribuidos/RMI/mensajeriaRMI/src/mensajeriarmi/georreferenciacion/GeorreferenciadorServer.java</file>
+            <file>file:/Users/DSO/Downloads/distribuidos/RMI/mensajeriaRMI/src/mensajeriarmi/georreferenciacion/MainGeorreferenciador.java</file>
+            <file>file:/Users/DSO/Downloads/distribuidos/RMI/mensajeriaRMI/src/mensajeriarmi/vistas/SolicitarEnvio.java</file>
+            <file>file:/Users/DSO/Downloads/distribuidos/RMI/mensajeriaRMI/src/mensajeriarmi/recepcion/ReceptorPaquetesRMI.java</file>
+            <file>file:/Users/DSO/Downloads/distribuidos/RMI/mensajeriaRMI/src/mensajeriarmi/recepcion/ReceptorRed.java</file>
+            <file>file:/Users/DSO/Downloads/distribuidos/RMI/mensajeriaRMI/src/mensajeriarmi/georreferenciacion/GeorreferenciadorRMI.java</file>
+            <file>file:/Users/DSO/Downloads/distribuidos/RMI/mensajeriaRMI/src/mensajeriarmi/georreferenciacion/Procesador.java</file>
+            <file>file:/Users/DSO/Downloads/distribuidos/RMI/mensajeriaRMI/src/mensajeriarmi/vistas/Principal.java</file>
+=======
+>>>>>>> 73b5492c4f180a6eb35e2582c2ea77dc6ec5ab1a
             <file>file:/C:/Users/Otro/Documents/NetBeansProjects/MensajeriaRMI/src/mensajeriarmi/bodega/ProcesadorEnvio.java</file>
             <file>file:/C:/Users/Otro/Documents/NetBeansProjects/MensajeriaRMI/src/mensajeriarmi/bodega/Despachador.java</file>
             <file>file:/C:/Users/Otro/Documents/NetBeansProjects/MensajeriaRMI/src/mensajeriarmi/recepcion/Procesador.java</file>
             <file>file:/C:/Users/Otro/Documents/NetBeansProjects/MensajeriaRMI/src/mensajeriarmi/bodega/MainBodega.java</file>
+<<<<<<< HEAD
             <file>file:/C:/Users/Otro/Documents/NetBeansProjects/MensajeriaRMI/src/mensajeriarmi/cliente/RedCliente.java</file>
             <file>file:/C:/Users/Otro/Documents/NetBeansProjects/MensajeriaRMI/src/mensajeriarmi/bodega/ProcesadorAlmacenamiento.java</file>
+=======
+>>>>>>> 6cd9834b0fc5b0371e1a1ab9c2beeefb8ddad6bb
+>>>>>>> 73b5492c4f180a6eb35e2582c2ea77dc6ec5ab1a
         </group>
     </open-files>
 </project-private>

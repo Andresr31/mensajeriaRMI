@@ -48,20 +48,20 @@ public class Procesador extends Thread implements Serializable {
         int i = 0;
         for(;;){
             if(bufferPaquetes.size() >=1){
-                System.out.println("A punto de georreferenciar un paquete");
+                System.out.println("-> A punto de georreferenciar un paquete");
                 try {
                     Thread.sleep(TIEMPO_GEORREFERENCIACION);
-                    System.out.println("Geoferrenciando paquete: ");
+                    System.out.println("-> Geoferrenciando paquete: ");
                     Paquete p = bufferPaquetes.get(i);
                     Ubicacion result = this.georreferenciador.buscarCiudad(p.getCiudadReceptor(), p.getDepartamentoReceptor());
                     //System.out.println();
-                    System.out.println(result.getLongitud());
+                    System.out.println("--> Longitud: " + result.getLongitud());
                     p.ubicarReceptor(result);
-                    System.out.println(p.getUbicacionReceptor().getLatitud());
+                    System.out.println("--> Latitud: "+p.getUbicacionReceptor().getLatitud());
                     this.georreferenciador.almacenarPaquete(p);
                     this.bufferPaquetes.remove(p);
-                    System.out.println("Quedan "+this.bufferPaquetes.size()+" por georreferenciar");
-                    System.out.println("");
+                    System.out.println("-> Quedan "+this.bufferPaquetes.size()+" por georreferenciar");
+                    System.out.println("////////////////////////////////////////////");
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);
                 } 
