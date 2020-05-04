@@ -17,6 +17,7 @@ import mensajeriarmi.paquete.Ubicacion;
 public class Principal extends javax.swing.JFrame {
 
     private ClienteRMI cliente;
+    private Notificable notificacion;
     /**
      * Creates new form registroCliente
      */
@@ -28,6 +29,8 @@ public class Principal extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("no lo veo");
         }
+        
+        
     }
 
     public ClienteRMI getCliente() {
@@ -37,6 +40,8 @@ public class Principal extends javax.swing.JFrame {
     public void setCliente(ClienteRMI cliente) {
         this.cliente = cliente;
         this.jlNombre.setText(this.cliente.getNombre());
+        this.notificacion = new Notificable(cliente, this);
+        this.notificacion.start();
     }
     
     public void enviarPaquete(Paquete p){

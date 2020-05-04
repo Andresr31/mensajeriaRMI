@@ -27,7 +27,7 @@ public class Paquete implements Serializable{
     private double peso;
     private int id;
     
-    public static int autoincremento;
+    public static int autoincremento =0;
     
     ///////////////////////////////////////////////////////////////////////////
 
@@ -57,9 +57,12 @@ public class Paquete implements Serializable{
         this.departamentoEmisor = departamentoE;
         this.departamentoReceptor = departamentoReceptor;
         this.fechaRecibido = fechaRecibido;
+        this.fechaEnvio = new Date();
         this.horaRecibido = horaRecibido;
         this.estado = estado;
         this.peso = peso;
+        Paquete.autoincremento ++;
+        this.id = Paquete.autoincremento;
         
     }
     

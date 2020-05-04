@@ -2,6 +2,7 @@ package mensajeriarmi.bodega;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import mensajeriarmi.paquete.Paquete;
 import mensajeriarmi.paquete.Ubicacion;
 
@@ -97,6 +98,7 @@ public class Despachador implements Serializable {
     public Camion cargarCamion(Camion c){
         for (Paquete paquete : paquetesEnvioTemp) {
             if(c.agregarPaquete(paquete)){
+                paquete.setFechaEnvio(new Date());
                 System.out.println("-> Paquete agregado destino: "+paquete.getCiudadReceptor());
                 paquete.setEstado("ENVIADO");
                 this.bodega.despacharPaquete(paquete);

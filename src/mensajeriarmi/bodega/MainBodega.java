@@ -6,6 +6,7 @@
 package mensajeriarmi.bodega;
 
 import java.util.ArrayList;
+import java.util.Date;
 import mensajeriarmi.paquete.Paquete;
 import mensajeriarmi.paquete.Ubicacion;
 import mensajeriarmi.vistas.BodegaVista;
@@ -17,6 +18,8 @@ import mensajeriarmi.vistas.BodegaVista;
 public class MainBodega {
     
     public static void main(String[] args){
+        
+        
         BodegaVista bodegaV = new BodegaVista(null, false);
         //BodegaRMI bodega = new BodegaRMI();
         

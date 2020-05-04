@@ -22,6 +22,8 @@ public class Camiones extends javax.swing.JDialog {
     /**
      * Creates new form Camiones
      */
+    private ArrayList<Camion> camiones;
+    
     public Camiones(java.awt.Frame parent, boolean modal, ArrayList<Camion> camiones) {
         super(parent, modal);
         initComponents();
@@ -181,9 +183,15 @@ public class Camiones extends javax.swing.JDialog {
         if (evt.getClickCount() > 1) {
         Point point = evt.getPoint();
         int row = jTable1.rowAtPoint(point);
-        int column = jTable1.columnAtPoint(point);
-        TableModel model = jTable1.getModel();
-        JOptionPane.showMessageDialog(this, model.getValueAt(row, column));
+        
+        Camion c = this.camiones.get(row);
+
+        PaquetesEnviados paquetes = new PaquetesEnviados(null, true, c.getPaquetes());
+        paquetes.cambiarId(c.getId()+"");
+        paquetes.setVisible(true);
+                
+        
+        //JOptionPane.showMessageDialog(this, model.getValueAt(row, column));
     }
         
         
@@ -192,7 +200,7 @@ public class Camiones extends javax.swing.JDialog {
     public void llenarTabla(ArrayList<Camion> camiones){
         
         DefaultTableModel model = new DefaultTableModel();
-        
+        this.camiones = camiones;
         model.addColumn("Id Camión");
         model.addColumn("Número de paquetes");
         model.addColumn("Latitud destino");

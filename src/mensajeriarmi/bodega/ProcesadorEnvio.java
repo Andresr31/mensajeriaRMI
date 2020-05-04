@@ -66,6 +66,7 @@ public class ProcesadorEnvio extends Thread implements Serializable {
                     this.bufferCamiones.remove(c);
                     this.clientesNotificables.remove(i);
                     this.bodega.almacenarRegistroCamion(c);
+                    
                     System.out.println("Quedan "+this.bufferCamiones.size()+" por cargar");
                     System.out.println("////////////////////////////////////////////");
                     
