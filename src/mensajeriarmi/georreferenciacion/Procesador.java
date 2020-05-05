@@ -6,6 +6,7 @@
 package mensajeriarmi.georreferenciacion;
 
 import java.io.Serializable;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -54,6 +55,12 @@ public class Procesador extends Thread implements Serializable {
                     Paquete p = bufferPaquetes.get(i);
                     Ubicacion result = this.georreferenciador.buscarCiudad(p.getCiudadReceptor(), p.getDepartamentoReceptor());
                     //System.out.println();
+                    if(result.getLatitud() == 0 && result.getLongitud() == 0){
+                        this.georreferenciador.agregarError("No se pudo realizar la georreferenciación del paquete "+p.getId()+"\n Ciudad y/o Departamento no encontrada");
+                        System.out.println("--> No se pudo geoferrenciar el paquete debido a que no encontró su ubicación");
+                        this.bufferPaquetes.remove(p);
+                        continue;
+                    }
                     System.out.println("--> Longitud: " + result.getLongitud());
                     p.ubicarReceptor(result);
                     System.out.println("--> Latitud: "+p.getUbicacionReceptor().getLatitud());
@@ -62,6 +69,8 @@ public class Procesador extends Thread implements Serializable {
                     System.out.println("-> Quedan "+this.bufferPaquetes.size()+" por georreferenciar");
                     System.out.println("////////////////////////////////////////////");
                 } catch (InterruptedException ex) {
+                    Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (RemoteException ex) {
                     Logger.getLogger(Procesador.class.getName()).log(Level.SEVERE, null, ex);
                 } 
             }else{

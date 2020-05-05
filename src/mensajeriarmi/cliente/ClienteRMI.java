@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import mensajeriarmi.objetos.Bodega;
 import mensajeriarmi.bodega.Camion;
-import mensajeriarmi.objetos.Cliente;
 import mensajeriarmi.paquete.Paquete;
 import mensajeriarmi.paquete.Ubicacion;
 import mensajeriarmi.objetos.ReceptorPaquetes;
@@ -40,6 +39,15 @@ public class ClienteRMI implements Serializable{
     }
     /////////////////////////////////////////////////////////////////////////
 
+    public ArrayList<String> getErrores()
+    {
+        try {
+            return this.receptorPaquetes.getErrores();
+        } catch (RemoteException ex) {
+            Logger.getLogger(ClienteRMI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
     public ReceptorPaquetes getReceptorPaquetes() {
         return receptorPaquetes;
     }

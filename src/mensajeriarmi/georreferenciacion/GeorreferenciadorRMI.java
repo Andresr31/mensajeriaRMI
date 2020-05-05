@@ -74,6 +74,9 @@ public class GeorreferenciadorRMI implements Georreferenciador{
         }
     }
     
+    public void agregarError(String error) throws RemoteException{
+        this.receptor.agregarError(error);
+    }
     
     //////////////////////////////////////////////////////////////////////////
 

@@ -12,12 +12,12 @@ import mensajeriarmi.bodega.BodegaRMI;
  *
  * @author DSO
  */
-public class Notificacion extends javax.swing.JDialog {
+public class NotificacionError extends javax.swing.JDialog {
 
     /**
      * Creates new form Bodega
      */
-    public Notificacion(java.awt.Frame parent, boolean modal) {
+    public NotificacionError(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -28,6 +28,10 @@ public class Notificacion extends javax.swing.JDialog {
         }
         
         
+    }
+    
+    public void cambiarMensaje(String error){
+        this.jError.setText(error);
     }
 
     /**
@@ -44,7 +48,7 @@ public class Notificacion extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         btnApagar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -68,11 +72,11 @@ public class Notificacion extends javax.swing.JDialog {
         });
         jPanel1.add(btnApagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 151, 130, -1));
 
-        jLabel3.setText("Se ha despachado un camión");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 89, -1, -1));
+        jLabel3.setText("ERROR");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, -1, -1));
 
-        jLabel4.setText("Para ver detalles seleccione la opción de ver envios");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 114, -1, -1));
+        jError.setText("Para ver detalles seleccione la opción de ver envios");
+        jPanel1.add(jError, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 114, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,10 +100,10 @@ public class Notificacion extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApagar;
+    private javax.swing.JLabel jError;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

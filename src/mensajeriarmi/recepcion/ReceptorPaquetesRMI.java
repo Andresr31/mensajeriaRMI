@@ -6,6 +6,7 @@
 package mensajeriarmi.recepcion;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mensajeriarmi.objetos.Bodega;
@@ -27,13 +28,15 @@ public class ReceptorPaquetesRMI implements ReceptorPaquetes{
     private ReceptorServer servidor;
     private ReceptorRed red;
     private Procesador procesador;
+    
+    private ArrayList<String> errores;
 
     public ReceptorPaquetesRMI(){
         super();       
 
         this.servidor = new ReceptorServer("127.0.0.1", this);
         this.red = new ReceptorRed("127.0.0.1", "127.0.0.1");//Host bodega, Host receptor
-        
+        this.errores = new ArrayList<>();
         this.asignarGeorreferenciador();
         this.asignarBodega();
         this.procesador = new Procesador(this);
@@ -51,6 +54,11 @@ public class ReceptorPaquetesRMI implements ReceptorPaquetes{
             System.out.println("Error al georreferenciar paquete \n" + ex.getMessage());
         }
 
+    }
+    
+    @Override
+    public void agregarError(String e){
+        this.errores.add(e);
     }
     
     @Override
@@ -144,6 +152,11 @@ public class ReceptorPaquetesRMI implements ReceptorPaquetes{
     }
     
     ///////////////////////////////////////////////////////////////////////////
+
+    @Override
+    public ArrayList<String> getErrores() throws RemoteException {
+        return this.errores;
+    }
     
     
     

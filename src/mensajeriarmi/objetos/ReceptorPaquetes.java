@@ -3,6 +3,7 @@ package mensajeriarmi.objetos;
 
 import mensajeriarmi.recepcion.*;
 import java.rmi.*;
+import java.util.ArrayList;
 import mensajeriarmi.paquete.Paquete;
 
 /**
@@ -14,6 +15,13 @@ public interface ReceptorPaquetes extends Remote{
             throws RemoteException;
     
     public String almacenarPaquete(Paquete p)
+            throws RemoteException;
+    
+    public void agregarError(String e)
+            throws RemoteException;
+    
+    
+    public ArrayList<String> getErrores()
             throws RemoteException;
 }
 

@@ -18,6 +18,7 @@ public class Principal extends javax.swing.JFrame {
 
     private ClienteRMI cliente;
     private Notificable notificacion;
+    private NotificableError notificacionE;
     /**
      * Creates new form registroCliente
      */
@@ -42,6 +43,8 @@ public class Principal extends javax.swing.JFrame {
         this.jlNombre.setText(this.cliente.getNombre());
         this.notificacion = new Notificable(cliente, this);
         this.notificacion.start();
+        this.notificacionE = new NotificableError(cliente, this);
+        this.notificacionE.start();
     }
     
     public void enviarPaquete(Paquete p){

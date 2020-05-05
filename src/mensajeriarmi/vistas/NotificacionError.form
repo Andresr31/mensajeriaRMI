@@ -88,15 +88,15 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Se ha despachado un cami&#xf3;n"/>
+            <Property name="text" type="java.lang.String" value="ERROR"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="106" y="89" width="-1" height="-1"/>
+              <AbsoluteConstraints x="150" y="90" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class="javax.swing.JLabel" name="jError">
           <Properties>
             <Property name="text" type="java.lang.String" value="Para ver detalles seleccione la opci&#xf3;n de ver envios"/>
           </Properties>
